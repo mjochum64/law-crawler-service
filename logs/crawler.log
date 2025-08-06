@@ -124,3 +124,17 @@
 2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
 2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-05: 0 new, 0 updated, 0 failed
 2025-08-06 13:22:10 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2025-08-06 13:26:49 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-07-01
+2025-08-06 13:26:49 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_index_1.xml
+2025-08-06 13:26:49 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-07-01
+2025-08-06 13:26:49 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml
+2025-08-06 13:26:51 [ForkJoinPool.commonPool-worker-5] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:26:51 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml
+2025-08-06 13:26:51 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-07-01: 0 new, 0 updated, 0 failed
+2025-08-06 13:27:21 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-07-02
+2025-08-06 13:27:21 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_index_1.xml
+2025-08-06 13:27:21 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-07-02
+2025-08-06 13:27:21 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml
+2025-08-06 13:27:24 [ForkJoinPool.commonPool-worker-5] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:27:24 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml
+2025-08-06 13:27:24 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-07-02: 0 new, 0 updated, 0 failed
