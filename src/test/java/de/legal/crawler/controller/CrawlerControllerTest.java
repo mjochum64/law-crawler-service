@@ -52,7 +52,7 @@ class CrawlerControllerTest {
                 .param("forceUpdate", "true"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.message").value("Crawling started successfully"))
-            .andExpected(jsonPath("$.date").value("2024-08-06"));
+            .andExpect(jsonPath("$.date").value("2024-08-06"));
 
         verify(orchestrationService).startCrawling(any(), eq(true));
     }
