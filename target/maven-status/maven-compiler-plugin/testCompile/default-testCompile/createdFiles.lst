@@ -1,0 +1,6 @@
+de/legal/crawler/service/SitemapCrawlerServiceTest.class
+de/legal/crawler/util/XmlSanitizerTest.class
+de/legal/crawler/service/XmlValidationServiceIntegrationTest.class
+de/legal/crawler/LawCrawlerServiceApplicationTests.class
+de/legal/crawler/model/LegalDocumentTest.class
+de/legal/crawler/validator/EcliValidatorTest.class

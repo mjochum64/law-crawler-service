@@ -51,7 +51,7 @@ class CrawlerControllerTest {
                 .param("date", "2024-08-06")
                 .param("forceUpdate", "true"))
             .andExpect(status().isOk())
-            .andExpected(jsonPath("$.message").value("Crawling started successfully"))
+            .andExpect(jsonPath("$.message").value("Crawling started successfully"))
             .andExpected(jsonPath("$.date").value("2024-08-06"));
 
         verify(orchestrationService).startCrawling(any(), eq(true));
@@ -61,7 +61,7 @@ class CrawlerControllerTest {
     void testStartCrawlWithoutDate() throws Exception {
         mockMvc.perform(post("/api/crawler/crawl"))
             .andExpect(status().isOk())
-            .andExpected(jsonPath("$.message").value("Crawling started successfully"));
+            .andExpect(jsonPath("$.message").value("Crawling started successfully"));
 
         verify(orchestrationService).startCrawling(any(), eq(false));
     }
