@@ -63,7 +63,7 @@ public class DocumentDownloadService {
     }
     
     /**
-     * Download XML content for a legal document
+     * Download XML content for a legal document with validation
      */
     public CompletableFuture<String> downloadDocument(LegalDocument document) {
         return CompletableFuture.supplyAsync(() -> {
@@ -74,7 +74,31 @@ public class DocumentDownloadService {
                 Thread.sleep(rateLimitMs);
                 
                 String xmlContent = fetchDocumentContent(document.getSourceUrl());
+                
+                // Perform XML validation
+                CompletableFuture<ComprehensiveValidationResult> validationFuture = 
+                    performXmlValidation(xmlContent, document);
+                
+                // Store document (validation may run async)
                 String filePath = storeDocument(document, xmlContent);
+                
+                // Wait for validation if running synchronously or in strict mode
+                if (!asyncValidation || strictValidationMode) {
+                    ComprehensiveValidationResult validationResult = validationFuture.get(
+                        validationTimeoutSeconds, TimeUnit.SECONDS
+                    );
+                    processValidationResult(document, validationResult);
+                } else {
+                    // Handle validation result asynchronously
+                    validationFuture.whenComplete((validationResult, throwable) -> {
+                        if (throwable != null) {
+                            logger.warn("Async validation failed for document {}: {}", 
+                                      document.getDocumentId(), throwable.getMessage());
+                        } else {
+                            processValidationResult(document, validationResult);
+                        }
+                    });
+                }
                 
                 // Update document with file path
                 document.setFilePath(filePath);
