@@ -1,0 +1,9 @@
+de/legal/crawler/model/LegalDocument$DocumentStatus.class
+de/legal/crawler/service/SitemapCrawlerService.class
+de/legal/crawler/service/CrawlerOrchestrationService.class
+de/legal/crawler/service/DocumentDownloadService$StorageStats.class
+de/legal/crawler/service/DocumentDownloadService.class
+de/legal/crawler/service/CrawlerOrchestrationService$CrawlResult.class
+de/legal/crawler/repository/LegalDocumentRepository.class
+de/legal/crawler/service/SitemapCrawlerService$DocumentEntry.class
+de/legal/crawler/model/LegalDocument.class

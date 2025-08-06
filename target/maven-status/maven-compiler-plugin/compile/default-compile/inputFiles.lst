@@ -1,0 +1,8 @@
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/CrawlerOrchestrationService.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/controller/CrawlerController.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/SitemapCrawlerService.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/repository/LegalDocumentRepository.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/ScheduledCrawlerService.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/LawCrawlerServiceApplication.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/DocumentDownloadService.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/model/LegalDocument.java
