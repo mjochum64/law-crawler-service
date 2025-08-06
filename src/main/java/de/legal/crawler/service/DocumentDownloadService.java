@@ -194,6 +194,175 @@ public class DocumentDownloadService {
         }
     }
     
+    /**
+     * Perform XML validation on downloaded content
+     */
+    private CompletableFuture<ComprehensiveValidationResult> performXmlValidation(
+            String xmlContent, LegalDocument document) {
+        
+        return xmlValidationService.validateLegalDocument(xmlContent)
+                .exceptionally(throwable -> {
+                    logger.error("XML validation failed for document {}: {}", 
+                               document.getDocumentId(), throwable.getMessage());
+                    
+                    // Create error result
+                    ComprehensiveValidationResult errorResult = new ComprehensiveValidationResult();
+                    errorResult.setValid(false);
+                    errorResult.addError("Validation process error: " + throwable.getMessage());
+                    
+                    return errorResult;
+                });
+    }
+    
+    /**
+     * Process validation results and update document metadata
+     */
+    private void processValidationResult(LegalDocument document, ComprehensiveValidationResult validationResult) {
+        try {
+            logger.info("Processing validation result for document {}: {}", 
+                       document.getDocumentId(), validationResult.getSummary());
+            
+            // Update document with ECLI identifier if found
+            if (!validationResult.getEcliIdentifiers().isEmpty()) {
+                String ecliIdentifier = validationResult.getEcliIdentifiers().iterator().next();
+                document.setEcliIdentifier(ecliIdentifier);
+                logger.info("Updated document {} with ECLI: {}", document.getDocumentId(), ecliIdentifier);
+            }
+            
+            // Update document type if detected
+            if (validationResult.getDocumentType() != null) {
+                document.setDocumentType(validationResult.getDocumentType());
+                logger.debug("Updated document {} with type: {}", document.getDocumentId(), validationResult.getDocumentType());
+            }
+            
+            // In strict mode, fail the document if validation failed
+            if (strictValidationMode && !validationResult.isValid()) {
+                document.setStatus(LegalDocument.DocumentStatus.FAILED);
+                logger.warn("Document {} failed validation in strict mode", document.getDocumentId());
+            } else if (validationResult.isValid()) {
+                // Update status to PROCESSED if validation passed
+                document.setStatus(LegalDocument.DocumentStatus.PROCESSED);
+                logger.info("Document {} passed validation", document.getDocumentId());
+            } else {
+                // Keep as DOWNLOADED if validation issues but not in strict mode
+                logger.warn("Document {} has validation warnings but proceeding: {}", 
+                           document.getDocumentId(), validationResult.getWarnings());
+            }
+            
+            // Log validation details for monitoring
+            if (!validationResult.getErrors().isEmpty()) {
+                logger.warn("Validation errors for document {}: {}", 
+                           document.getDocumentId(), validationResult.getErrors());
+            }
+            
+            if (!validationResult.getWarnings().isEmpty()) {
+                logger.info("Validation warnings for document {}: {}", 
+                           document.getDocumentId(), validationResult.getWarnings());
+            }
+            
+        } catch (Exception e) {
+            logger.error("Failed to process validation result for document {}: {}", 
+                        document.getDocumentId(), e.getMessage());
+        }
+    }
+    
+    /**
+     * Download and validate document with enhanced error handling
+     */
+    public CompletableFuture<ValidationAwareDownloadResult> downloadDocumentWithValidation(LegalDocument document) {
+        return CompletableFuture.supplyAsync(() -> {
+            ValidationAwareDownloadResult result = new ValidationAwareDownloadResult();
+            result.setDocument(document);
+            
+            try {
+                logger.info("Starting enhanced download for document: {}", document.getDocumentId());
+                
+                // Rate limiting
+                Thread.sleep(rateLimitMs);
+                
+                String xmlContent = fetchDocumentContent(document.getSourceUrl());
+                result.setXmlContent(xmlContent);
+                
+                // Perform validation
+                ComprehensiveValidationResult validationResult = 
+                    xmlValidationService.validateLegalDocument(xmlContent).get(
+                        validationTimeoutSeconds, TimeUnit.SECONDS
+                    );
+                result.setValidationResult(validationResult);
+                
+                // Store document
+                String filePath = storeDocument(document, xmlContent);
+                
+                // Process validation results
+                processValidationResult(document, validationResult);
+                
+                // Update document
+                document.setFilePath(filePath);
+                document.setCrawledAt(LocalDateTime.now());
+                
+                result.setSuccess(true);
+                result.setFilePath(filePath);
+                
+                logger.info("Enhanced download completed for document: {}", document.getDocumentId());
+                
+            } catch (Exception e) {
+                logger.error("Enhanced download failed for document {}: {}", document.getDocumentId(), e.getMessage());
+                document.setStatus(LegalDocument.DocumentStatus.FAILED);
+                result.setSuccess(false);
+                result.setErrorMessage(e.getMessage());
+            }
+            
+            return result;
+        });
+    }
+    
+    /**
+     * Result container for validation-aware downloads
+     */
+    public static class ValidationAwareDownloadResult {
+        private LegalDocument document;
+        private String xmlContent;
+        private String filePath;
+        private ComprehensiveValidationResult validationResult;
+        private boolean success;
+        private String errorMessage;
+        
+        // Getters and setters
+        public LegalDocument getDocument() { return document; }
+        public void setDocument(LegalDocument document) { this.document = document; }
+        
+        public String getXmlContent() { return xmlContent; }
+        public void setXmlContent(String xmlContent) { this.xmlContent = xmlContent; }
+        
+        public String getFilePath() { return filePath; }
+        public void setFilePath(String filePath) { this.filePath = filePath; }
+        
+        public ComprehensiveValidationResult getValidationResult() { return validationResult; }
+        public void setValidationResult(ComprehensiveValidationResult validationResult) { this.validationResult = validationResult; }
+        
+        public boolean isSuccess() { return success; }
+        public void setSuccess(boolean success) { this.success = success; }
+        
+        public String getErrorMessage() { return errorMessage; }
+        public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
+        
+        public boolean hasValidationErrors() {
+            return validationResult != null && !validationResult.getErrors().isEmpty();
+        }
+        
+        public boolean isValidDocument() {
+            return success && validationResult != null && validationResult.isValid();
+        }
+        
+        @Override
+        public String toString() {
+            return String.format("ValidationAwareDownloadResult{document='%s', success=%s, validDocument=%s}",
+                               document != null ? document.getDocumentId() : "null", 
+                               success, 
+                               isValidDocument());
+        }
+    }
+    
     public static class StorageStats {
         private final long fileCount;
         private final long totalSizeBytes;
