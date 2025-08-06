@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://legal.example.com/schema"
+           xmlns:tns="http://legal.example.com/schema"
+           elementFormDefault="qualified">
+
+    <!-- Simple legal document schema for demonstration -->
+    
+    <!-- Root element -->
+    <xs:element name="legalDocument" type="tns:LegalDocumentType"/>
+    
+    <!-- Complex types -->
+    <xs:complexType name="LegalDocumentType">
+        <xs:sequence>
+            <xs:element name="metadata" type="tns:MetadataType"/>
+            <xs:element name="content" type="tns:ContentType"/>
+            <xs:element name="references" type="tns:ReferencesType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="version" type="xs:string" use="optional" default="1.0"/>
+    </xs:complexType>
+    
+    <xs:complexType name="MetadataType">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="court" type="tns:CourtType"/>
+            <xs:element name="decisionDate" type="xs:date"/>
+            <xs:element name="docketNumber" type="xs:string"/>
+            <xs:element name="ecli" type="tns:EcliType" minOccurs="0"/>
+            <xs:element name="documentType" type="tns:DocumentTypeEnum"/>
+            <xs:element name="judges" type="tns:JudgesType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="ContentType">
+        <xs:sequence>
+            <xs:element name="summary" type="xs:string" minOccurs="0"/>
+            <xs:element name="facts" type="tns:SectionType" minOccurs="0"/>
+            <xs:element name="reasoning" type="tns:SectionType"/>
+            <xs:element name="decision" type="tns:SectionType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="SectionType">
+        <xs:sequence>
+            <xs:element name="heading" type="xs:string" minOccurs="0"/>
+            <xs:element name="paragraph" type="tns:ParagraphType" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="optional"/>
+    </xs:complexType>
+    
+    <xs:complexType name="ParagraphType" mixed="true">
+        <xs:sequence>
+            <xs:element name="citation" type="tns:CitationType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="legalReference" type="tns:LegalReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="number" type="xs:positiveInteger" use="optional"/>
+    </xs:complexType>
+    
+    <xs:complexType name="ReferencesType">
+        <xs:sequence>
+            <xs:element name="relatedCase" type="tns:RelatedCaseType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="legalProvision" type="tns:LegalProvisionType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="RelatedCaseType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ecli" type="tns:EcliType" use="optional"/>
+                <xs:attribute name="relationship" type="tns:RelationshipType" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="LegalProvisionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="law" type="xs:string" use="required"/>
+                <xs:attribute name="section" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="CitationType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="source" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="LegalReferenceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="type" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <xs:complexType name="JudgesType">
+        <xs:sequence>
+            <xs:element name="judge" type="tns:JudgeType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="JudgeType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="role" type="tns:JudgeRoleType" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+    <!-- Simple types and enumerations -->
+    <xs:simpleType name="CourtType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BAG"/>  <!-- Bundesarbeitsgericht -->
+            <xs:enumeration value="BGH"/>  <!-- Bundesgerichtshof -->
+            <xs:enumeration value="BSG"/>  <!-- Bundessozialgericht -->
+            <xs:enumeration value="BVERWG"/> <!-- Bundesverwaltungsgericht -->
+            <xs:enumeration value="BFH"/>  <!-- Bundesfinanzhof -->
+            <xs:enumeration value="BVERFG"/> <!-- Bundesverfassungsgericht -->
+            <xs:enumeration value="BPATG"/> <!-- Bundespatentgericht -->
+            <xs:enumeration value="OLG"/>  <!-- Oberlandesgericht -->
+            <xs:enumeration value="LAG"/>  <!-- Landesarbeitsgericht -->
+            <xs:enumeration value="LSG"/>  <!-- Landessozialgericht -->
+            <xs:enumeration value="OVG"/>  <!-- Oberverwaltungsgericht -->
+            <xs:enumeration value="VG"/>   <!-- Verwaltungsgericht -->
+            <xs:enumeration value="SG"/>   <!-- Sozialgericht -->
+            <xs:enumeration value="FG"/>   <!-- Finanzgericht -->
+            <xs:enumeration value="AG"/>   <!-- Amtsgericht -->
+            <xs:enumeration value="LG"/>   <!-- Landgericht -->
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="DocumentTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Urteil"/>
+            <xs:enumeration value="Beschluss"/>
+            <xs:enumeration value="Verfügung"/>
+            <xs:enumeration value="Entscheidung"/>
+            <xs:enumeration value="Judgment"/>
+            <xs:enumeration value="Order"/>
+            <xs:enumeration value="Decision"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="RelationshipType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="follows"/>
+            <xs:enumeration value="contradicts"/>
+            <xs:enumeration value="supports"/>
+            <xs:enumeration value="distinguishes"/>
+            <xs:enumeration value="overrules"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="JudgeRoleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="president"/>
+            <xs:enumeration value="vice-president"/>
+            <xs:enumeration value="judge"/>
+            <xs:enumeration value="rapporteur"/>
+            <xs:enumeration value="associate"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- ECLI identifier pattern -->
+    <xs:simpleType name="EcliType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="ECLI:[A-Z]{2}:[A-Z][A-Z0-9]{0,6}:\d{4}:[A-Z0-9.]{1,25}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>
