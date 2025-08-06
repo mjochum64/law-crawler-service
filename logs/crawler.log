@@ -116,3 +116,11 @@
 2025-08-06 13:17:15 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml: Content is not allowed in prolog.
 2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml
 2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-01: 0 new, 0 updated, 0 failed
+2025-08-06 13:21:37 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-08-05
+2025-08-06 13:21:37 [ForkJoinPool.commonPool-worker-3] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_index_1.xml
+2025-08-06 13:21:37 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-08-05
+2025-08-06 13:21:37 [ForkJoinPool.commonPool-worker-3] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
+2025-08-06 13:21:39 [ForkJoinPool.commonPool-worker-3] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
+2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-05: 0 new, 0 updated, 0 failed
+2025-08-06 13:22:10 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
