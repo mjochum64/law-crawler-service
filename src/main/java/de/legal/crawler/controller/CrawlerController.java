@@ -137,11 +137,10 @@ public class CrawlerController {
     @PostMapping("/retry-failed")
     public ResponseEntity<Map<String, Object>> retryFailedDocuments() {
         try {
-            int retryCount = orchestrationService.retryFailedDocuments();
+            orchestrationService.retryFailedDocuments();
             
             return ResponseEntity.ok(Map.of(
                 "message", "Retry initiated for failed documents",
-                "documentsRetried", retryCount,
                 "timestamp", System.currentTimeMillis()
             ));
             
