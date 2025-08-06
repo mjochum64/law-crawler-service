@@ -1,8 +1,11 @@
 package de.legal.crawler.service;
 
 import de.legal.crawler.model.LegalDocument;
+import de.legal.crawler.exception.XmlValidationException;
+import de.legal.crawler.service.XmlValidationService.ComprehensiveValidationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Service for downloading XML content of legal documents
