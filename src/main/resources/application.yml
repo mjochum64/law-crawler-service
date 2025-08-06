@@ -1,0 +1,88 @@
+spring:
+  application:
+    name: law-crawler-service
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:h2:file:./data/legal-documents;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  
+  # Async Configuration
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 16
+        queue-capacity: 100
+
+# Server Configuration  
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Management/Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+
+# Crawler Configuration
+crawler:
+  base-url: https://www.rechtsprechung-im-internet.de
+  user-agent: LegalDocumentCrawler/1.0 (Contact: your-email@example.com)
+  rate-limit-ms: 2000  # 2 seconds between requests
+  
+  storage:
+    base-path: ./legal-documents
+  
+  scheduled:
+    enabled: true
+    days-back: 7
+    daily-cron: "0 0 6 * * ?"      # Daily at 6 AM
+    weekly-cron: "0 0 2 * * SUN"   # Sunday at 2 AM  
+    retry-cron: "0 0 */6 * * ?"     # Every 6 hours
+
+# Logging Configuration
+logging:
+  level:
+    de.legal.crawler: INFO
+    org.springframework.scheduling: WARN
+    org.hibernate.SQL: WARN
+  
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  
+  file:
+    name: ./logs/crawler.log
+    max-size: 10MB
+    max-history: 30
+
+# Application Info
+info:
+  app:
+    name: Legal Document Crawler Service
+    version: 1.0.0
+    description: Spring Boot service for crawling legal documents from rechtsprechung-im-internet.de
+    contact: your-email@example.com
