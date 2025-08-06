@@ -50,3 +50,69 @@
 2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-06 13:15:58 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 86090 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
+2025-08-06 13:15:58 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-06 13:15:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-06 13:15:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
+2025-08-06 13:15:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-08-06 13:15:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-06 13:15:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2025-08-06 13:15:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-06 13:15:59 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 509 ms
+2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
+2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-06 13:15:59 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
+2025-08-06 13:15:59 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-06 13:15:59 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-08-06 13:15:59 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-06 13:15:59 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-06 13:15:59 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-06 13:15:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-06 13:15:59 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-06 13:15:59 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-06 13:16:00 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+2025-08-06 13:16:00 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+2025-08-06 13:16:00 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@8b3ea30
+2025-08-06 13:16:00 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-08-06 13:16:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-08-06 13:16:00 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 1.938 seconds (process running for 2.046)
+2025-08-06 13:16:00 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 199 MB / 552 MB
+2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-06 13:16:43 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2024-08-06
+2025-08-06 13:16:43 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_index_1.xml
+2025-08-06 13:16:43 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2024-08-06
+2025-08-06 13:16:43 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml
+2025-08-06 13:16:45 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:16:45 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml
+2025-08-06 13:16:45 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2024-08-06: 0 new, 0 updated, 0 failed
+2025-08-06 13:17:05 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2024-08-01
+2025-08-06 13:17:05 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_index_1.xml
+2025-08-06 13:17:05 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2024-08-01
+2025-08-06 13:17:05 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml
+2025-08-06 13:17:07 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:17:07 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml
+2025-08-06 13:17:07 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2024-08-01: 0 new, 0 updated, 0 failed
+2025-08-06 13:17:13 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-08-01
+2025-08-06 13:17:13 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_index_1.xml
+2025-08-06 13:17:13 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-08-01
+2025-08-06 13:17:13 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml
+2025-08-06 13:17:15 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml
+2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-01: 0 new, 0 updated, 0 failed
