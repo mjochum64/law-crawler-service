@@ -50,7 +50,7 @@ management:
 # Crawler Configuration
 crawler:
   base-url: https://www.rechtsprechung-im-internet.de
-  user-agent: LegalDocumentCrawler/1.0 (Contact: your-email@example.com)
+  user-agent: "LegalDocumentCrawler/1.0 (Contact: your-email@example.com)"
   rate-limit-ms: 2000  # 2 seconds between requests
   
   storage:
