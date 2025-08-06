@@ -33,6 +33,9 @@ public class DocumentDownloadService {
 
     private static final Logger logger = LoggerFactory.getLogger(DocumentDownloadService.class);
     
+    @Autowired
+    private XmlValidationService xmlValidationService;
+    
     @Value("${crawler.storage.base-path:./legal-documents}")
     private String basePath;
     
@@ -41,6 +44,15 @@ public class DocumentDownloadService {
     
     @Value("${crawler.rate-limit-ms:1000}")
     private long rateLimitMs;
+    
+    @Value("${validation.xml.async-validation:true}")
+    private boolean asyncValidation;
+    
+    @Value("${validation.xml.validation-timeout-seconds:30}")
+    private long validationTimeoutSeconds;
+    
+    @Value("${validation.xml.strict-mode:false}")
+    private boolean strictValidationMode;
     
     private final HttpClient httpClient;
     
