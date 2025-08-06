@@ -66,26 +66,17 @@ crawler:
 # XML Validation Configuration
 validation:
   xml:
-    # Enable/disable XML validation components
     schema-validation-enabled: true
     legaldocml-validation-enabled: true
     ecli-validation-enabled: true
-    
-    # Validation strictness
-    strict-mode: false  # If true, any validation failure will cause document processing to fail
-    
-    # Security settings
+    strict-mode: false
+    async-validation: true
+    validation-timeout-seconds: 30
     security:
-      max-xml-size-mb: 10  # Maximum XML file size in MB
+      max-xml-size-mb: 10
       enable-sanitization: true
       block-external-entities: true
       block-doctype-declarations: true
-      
-    # Performance settings
-    async-validation: true
-    validation-timeout-seconds: 30
-    
-    # Schema locations (if available)
     schemas:
       legaldocml-schema-path: "classpath:schemas/legaldocml.xsd"
       akoma-ntoso-schema-path: "classpath:schemas/akomantoso30.xsd"
