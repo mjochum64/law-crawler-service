@@ -27,6 +27,7 @@ public class CrawlerController {
     private CrawlerOrchestrationService orchestrationService;
     
     @Autowired
+    @Qualifier("legalDocumentRepository")
     private LegalDocumentRepository documentRepository;
     
     @Autowired
