@@ -1,0 +1,55 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'legal-crawler-monitor'
+
+rule_files:
+  # - "rules.yml"
+
+scrape_configs:
+  # Legal Document Crawler Application
+  - job_name: 'legal-crawler-app'
+    static_configs:
+      - targets: ['crawler-app:8080']
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    honor_labels: true
+    params:
+      format: ['prometheus']
+
+  # Solr Metrics
+  - job_name: 'solr'
+    static_configs:
+      - targets: ['solr:8983']
+    metrics_path: '/solr/admin/metrics'
+    scrape_interval: 30s
+    params:
+      wt: ['prometheus']
+      group: ['all']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: solr:8983
+
+  # Nginx Metrics (if nginx-prometheus-exporter is added)
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:9113']
+    scrape_interval: 15s
+
+  # System metrics (if node-exporter is added)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
