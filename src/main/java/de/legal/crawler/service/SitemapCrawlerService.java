@@ -135,7 +135,7 @@ public class SitemapCrawlerService {
             Element sitemap = (Element) sitemaps.item(i);
             NodeList locNodes = sitemap.getElementsByTagName("loc");
             if (locNodes.getLength() > 0) {
-                sitemapUrls.add(locNodes.item(0).getTextContent());
+                sitemapUrls.add(locNodes.item(0).getTextContent().trim());
             }
         }
         
