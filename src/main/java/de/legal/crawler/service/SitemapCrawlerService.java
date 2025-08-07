@@ -175,7 +175,14 @@ public class SitemapCrawlerService {
         if (rawUrl == null) return null;
         
         // Remove all whitespace characters (spaces, tabs, newlines, etc.)
-        return rawUrl.replaceAll("\\s+", "").trim();
+        String normalized = rawUrl.replaceAll("\\s+", "").trim();
+        
+        // Debug logging
+        if (!rawUrl.equals(normalized)) {
+            logger.info("URL normalized: '{}' -> '{}'", rawUrl.replace("\n", "\\n").replace("\r", "\\r"), normalized);
+        }
+        
+        return normalized;
     }
     
     /**
