@@ -3,25 +3,88 @@ package de.legal.crawler.repository;
 import de.legal.crawler.model.LegalDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository interface for LegalDocument entities
+ * Common interface for LegalDocument repository implementations
+ * Implemented by both JPA and Solr repositories
  */
-@Repository
-public interface LegalDocumentRepository extends JpaRepository<LegalDocument, Long> {
+public interface LegalDocumentRepository {
 
+    /**
+     * Save a single document
+     */
+    <S extends LegalDocument> S save(S document);
+    
+    /**
+     * Save multiple documents
+     */
+    <S extends LegalDocument> Iterable<S> saveAll(Iterable<S> documents);
+    
+    /**
+     * Find document by ID
+     */
+    Optional<LegalDocument> findById(Long id);
+    
     /**
      * Find document by unique document ID
      */
     Optional<LegalDocument> findByDocumentId(String documentId);
+    
+    /**
+     * Check if document exists by ID
+     */
+    boolean existsById(Long id);
+    
+    /**
+     * Check if document exists by URL
+     */
+    boolean existsBySourceUrl(String sourceUrl);
+    
+    /**
+     * Find all documents
+     */
+    Iterable<LegalDocument> findAll();
+    
+    /**
+     * Find documents by IDs
+     */
+    Iterable<LegalDocument> findAllById(Iterable<Long> ids);
+    
+    /**
+     * Count all documents
+     */
+    long count();
+    
+    /**
+     * Delete document by ID
+     */
+    void deleteById(Long id);
+    
+    /**
+     * Delete document
+     */
+    void delete(LegalDocument document);
+    
+    /**
+     * Delete documents by IDs
+     */
+    void deleteAllById(Iterable<? extends Long> ids);
+    
+    /**
+     * Delete documents
+     */
+    void deleteAll(Iterable<? extends LegalDocument> documents);
+    
+    /**
+     * Delete all documents
+     */
+    void deleteAll();
+
+    // Custom query methods
     
     /**
      * Find all documents by court
@@ -41,10 +104,7 @@ public interface LegalDocumentRepository extends JpaRepository<LegalDocument, Lo
     /**
      * Find documents within date range
      */
-    @Query("SELECT d FROM LegalDocument d WHERE d.decisionDate BETWEEN :startDate AND :endDate ORDER BY d.decisionDate DESC")
-    List<LegalDocument> findByDecisionDateBetween(
-        @Param("startDate") LocalDateTime startDate, 
-        @Param("endDate") LocalDateTime endDate);
+    List<LegalDocument> findByDecisionDateBetween(LocalDateTime startDate, LocalDateTime endDate);
     
     /**
      * Find documents crawled after a specific date
@@ -59,25 +119,17 @@ public interface LegalDocumentRepository extends JpaRepository<LegalDocument, Lo
     /**
      * Count documents by court
      */
-    @Query("SELECT d.court, COUNT(d) FROM LegalDocument d GROUP BY d.court")
     List<Object[]> countDocumentsByCourt();
     
     /**
      * Count documents by status
      */
-    @Query("SELECT d.status, COUNT(d) FROM LegalDocument d GROUP BY d.status")
     List<Object[]> countDocumentsByStatus();
     
     /**
      * Find failed documents for retry
      */
-    @Query("SELECT d FROM LegalDocument d WHERE d.status = 'FAILED' AND d.crawledAt < :retryAfter")
-    List<LegalDocument> findFailedDocumentsForRetry(@Param("retryAfter") LocalDateTime retryAfter);
-    
-    /**
-     * Check if document exists by URL
-     */
-    boolean existsBySourceUrl(String sourceUrl);
+    List<LegalDocument> findFailedDocumentsForRetry(LocalDateTime retryAfter);
     
     /**
      * Find documents by court with pagination
@@ -87,12 +139,10 @@ public interface LegalDocumentRepository extends JpaRepository<LegalDocument, Lo
     /**
      * Search documents by title containing text
      */
-    @Query("SELECT d FROM LegalDocument d WHERE LOWER(d.title) LIKE LOWER(CONCAT('%', :searchTerm, '%'))")
-    List<LegalDocument> findByTitleContainingIgnoreCase(@Param("searchTerm") String searchTerm);
+    List<LegalDocument> findByTitleContainingIgnoreCase(String searchTerm);
     
     /**
-     * Find recent documents (last N days)
+     * Find recent documents
      */
-    @Query("SELECT d FROM LegalDocument d WHERE d.decisionDate >= :since ORDER BY d.decisionDate DESC")
-    List<LegalDocument> findRecentDocuments(@Param("since") LocalDateTime since);
+    List<LegalDocument> findRecentDocuments(LocalDateTime since);
 }
