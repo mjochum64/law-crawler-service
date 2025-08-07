@@ -50,8 +50,9 @@ crawler:
   # Docker-specific scheduling
   scheduling:
     enabled: true
-    daily-crawl: "0 1 * * *"
-    retry-failed: "0 */6 * * *"
+    daily-crawl: "0 6 * * *"        # Täglich um 6:00 Uhr
+    weekly-crawl: "0 2 * * SUN"     # Sonntags um 2:00 Uhr (vollständiger Crawl)
+    retry-failed: "0 */6 * * *"      # Alle 6 Stunden fehlgeschlagene Downloads wiederholen
 
 # Solr configuration for Docker network
 solr:
