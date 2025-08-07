@@ -1,28 +1,20 @@
 # Multi-stage Docker build for Legal Document Crawler
-FROM openjdk:17-jdk-slim as builder
+FROM maven:3.9-eclipse-temurin-17 AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml
-COPY mvnw .
-COPY .mvn .mvn
+# Copy pom.xml first for better caching
 COPY pom.xml .
 
-# Make Maven wrapper executable
-RUN chmod +x ./mvnw
-
 # Download dependencies (cached layer)
-RUN ./mvnw dependency:resolve
+RUN mvn dependency:go-offline -B
 
 # Copy source code
 COPY src src
 
-# Copy Solr configuration files
-COPY solr-config solr-config
-
 # Build application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests -B
 
 # Runtime stage
 FROM eclipse-temurin:17-jre
@@ -38,9 +30,6 @@ WORKDIR /app
 
 # Copy built jar from builder stage
 COPY --from=builder /app/target/*.jar app.jar
-
-# Copy Solr configuration for runtime access
-COPY --from=builder /app/solr-config ./config/solr
 
 # Create directories for data and logs
 RUN mkdir -p /app/data /app/logs && chown -R appuser:appuser /app
