@@ -405,7 +405,7 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
         document.setFilePath(getStringFieldValue(solrDoc, "file_path"));
         document.setDocumentType(getStringFieldValue(solrDoc, "document_type"));
         
-        String statusStr = (String) solrDoc.getFieldValue("status");
+        String statusStr = getStringFieldValue(solrDoc, "status");
         if (statusStr != null) {
             document.setStatus(LegalDocument.DocumentStatus.valueOf(statusStr));
         }
