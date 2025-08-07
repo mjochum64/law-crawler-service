@@ -117,8 +117,15 @@ public class DocumentDownloadService {
     }
     
     private String fetchDocumentContent(String url) throws IOException, InterruptedException {
+        // Normalize URL to remove any whitespace characters
+        String cleanUrl = url != null ? url.replaceAll("\\s+", "").trim() : url;
+        
+        if (!url.equals(cleanUrl)) {
+            logger.info("URL cleaned: '{}' -> '{}'", url.replace("\n", "\\n").replace("\r", "\\r"), cleanUrl);
+        }
+        
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(url))
+            .uri(URI.create(cleanUrl))
             .header("User-Agent", userAgent)
             .header("Accept", "application/xml, text/xml, */*")
             .GET()
