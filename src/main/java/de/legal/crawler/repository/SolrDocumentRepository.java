@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
  * Provides all CRUD operations directly against Apache Solr
  */
 @Repository
+@org.springframework.context.annotation.Profile("solr")
 public class SolrDocumentRepository implements LegalDocumentRepository {
 
     private static final Logger logger = LoggerFactory.getLogger(SolrDocumentRepository.class);
