@@ -177,9 +177,45 @@ public class DocumentDownloadService {
     }
     
     /**
-     * Get storage statistics
+     * Get storage statistics - adapts to storage mode (file system or Solr)
      */
     public StorageStats getStorageStats() {
+        // Check if we're running in Solr mode
+        if (environment.acceptsProfiles("solr")) {
+            return getSolrStorageStats();
+        } else {
+            return getFileSystemStorageStats();
+        }
+    }
+    
+    /**
+     * Get storage statistics from Solr
+     */
+    private StorageStats getSolrStorageStats() {
+        try {
+            // Get document count from Solr
+            long documentCount = documentRepository.count();
+            
+            // Estimate size based on average document size (approximation)
+            // In a real implementation, you could store file sizes in Solr
+            long estimatedAverageSize = 50 * 1024; // 50KB per document (estimated)
+            long estimatedTotalSize = documentCount * estimatedAverageSize;
+            
+            logger.debug("Solr storage stats: {} documents, ~{} MB total", 
+                        documentCount, estimatedTotalSize / (1024 * 1024));
+            
+            return new StorageStats(documentCount, estimatedTotalSize);
+            
+        } catch (Exception e) {
+            logger.error("Failed to get Solr storage stats: {}", e.getMessage());
+            return new StorageStats(0, 0L);
+        }
+    }
+    
+    /**
+     * Get storage statistics from file system (original implementation)
+     */
+    private StorageStats getFileSystemStorageStats() {
         try {
             Path baseStoragePath = Paths.get(basePath);
             if (!Files.exists(baseStoragePath)) {
@@ -206,7 +242,7 @@ public class DocumentDownloadService {
             return new StorageStats(fileCount, totalSize);
             
         } catch (IOException e) {
-            logger.error("Failed to calculate storage stats: {}", e.getMessage());
+            logger.error("Failed to calculate file system storage stats: {}", e.getMessage());
             return new StorageStats(0, 0L);
         }
     }
