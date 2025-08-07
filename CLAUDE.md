@@ -77,12 +77,22 @@ mvn clean package
 ## Context Restoration Instructions
 When resuming work on this project, agents should:
 1. Load this CLAUDE.md for project context
-2. Check MCP memory namespace "hive-collective" for previous findings
-3. Review recent git commits for latest changes
-4. Validate service status with `mvn test`
+2. Start Docker environment with `docker-compose up -d`
+3. Verify container health with `docker-compose ps` and `docker-compose logs`
+4. Check Solr status at http://localhost:8983/solr
+5. Test API endpoints at http://localhost:8080/api/crawler/status
+6. Review recent git commits for latest changes
 
 ## Last Analysis Session
 **Date**: 2025-08-07  
-**Hive Mind Session**: swarm_1754541238628_58dzufkk2  
-**Key Findings**: Complete architecture documented, context management implemented  
-**Status**: Context persistence system active
+**Major Update**: Complete migration to Docker + Solr architecture  
+**Key Achievements**:
+- ✅ Full Docker Compose setup with Nginx, Solr, Spring Boot
+- ✅ Apache Solr 9.4.1 integration with dual storage (Solr + XML files)
+- ✅ Jetty HTTP Client dependencies resolved for SolrJ compatibility
+- ✅ ClassCastException fixed with robust field conversion
+- ✅ BulkCrawlerService made Solr-compatible with optional repository pattern
+- ✅ Intelligent sitemap discovery with gzip support and content validation
+- ✅ Profile-based configuration (docker, solr profiles)
+- ✅ Container health checks and persistent volumes
+**Current Status**: Production-ready containerized system with clean Solr collection
