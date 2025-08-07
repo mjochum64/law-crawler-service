@@ -39,6 +39,13 @@ public class DocumentDownloadService {
     @Autowired
     private XmlValidationService xmlValidationService;
     
+    @Autowired
+    @Qualifier("legalDocumentRepository") 
+    private LegalDocumentRepository documentRepository;
+    
+    @Autowired
+    private Environment environment;
+    
     @Value("${crawler.storage.base-path:./legal-documents}")
     private String basePath;
     
