@@ -396,14 +396,14 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
     private LegalDocument convertFromSolrDocument(SolrDocument solrDoc) {
         LegalDocument document = new LegalDocument();
         
-        document.setDocumentId((String) solrDoc.getFieldValue("document_id"));
-        document.setCourt((String) solrDoc.getFieldValue("court"));
-        document.setEcliIdentifier((String) solrDoc.getFieldValue("ecli_identifier"));
-        document.setSourceUrl((String) solrDoc.getFieldValue("source_url"));
-        document.setTitle((String) solrDoc.getFieldValue("title"));
-        document.setSummary((String) solrDoc.getFieldValue("summary"));
-        document.setFilePath((String) solrDoc.getFieldValue("file_path"));
-        document.setDocumentType((String) solrDoc.getFieldValue("document_type"));
+        document.setDocumentId(getStringFieldValue(solrDoc, "document_id"));
+        document.setCourt(getStringFieldValue(solrDoc, "court"));
+        document.setEcliIdentifier(getStringFieldValue(solrDoc, "ecli_identifier"));
+        document.setSourceUrl(getStringFieldValue(solrDoc, "source_url"));
+        document.setTitle(getStringFieldValue(solrDoc, "title"));
+        document.setSummary(getStringFieldValue(solrDoc, "summary"));
+        document.setFilePath(getStringFieldValue(solrDoc, "file_path"));
+        document.setDocumentType(getStringFieldValue(solrDoc, "document_type"));
         
         String statusStr = (String) solrDoc.getFieldValue("status");
         if (statusStr != null) {
