@@ -58,7 +58,6 @@ public class BulkCrawlerService {
      * Start a full bulk crawl operation for all available documents
      */
     @Async
-    @Transactional
     public CompletableFuture<String> startFullBulkCrawl(BulkCrawlConfiguration config) {
         String operationId = generateOperationId();
         logger.info("Starting full bulk crawl operation: {}", operationId);
