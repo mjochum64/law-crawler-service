@@ -5,6 +5,7 @@ import de.legal.crawler.service.CrawlerOrchestrationService;
 import de.legal.crawler.service.DocumentDownloadService;
 import de.legal.crawler.repository.LegalDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
