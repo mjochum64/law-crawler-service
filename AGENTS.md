@@ -1,11 +1,27 @@
 # AGENTS.md - Law Crawler Service
 
-## Build & Test Commands
+## 🚀 QUICK CONTEXT RESTORATION
+**For AI agents resuming work on this project:**
+1. **Architecture**: Spring Boot 3.2.2 + Java 17 + Maven
+2. **Purpose**: Crawls legal documents from rechtsprechung-im-internet.de (German legal portal)
+3. **Key Features**: XML validation (LegalDocML.de), ECLI validation, security sanitization, scheduled crawling
+4. **Storage**: H2 database (./data/), XML files (./legal-documents/)
+5. **Main API**: http://localhost:8080/api/crawler
+
+## 🏗️ SYSTEM ARCHITECTURE OVERVIEW
+- **Controllers**: CrawlerController (REST API), XmlValidationController (validation API)
+- **Services**: SitemapCrawlerService, XmlValidationService, BulkCrawlerService, DocumentDownloadService
+- **Models**: LegalDocument (JPA entity), BulkCrawlProgress (tracking)
+- **Validators**: EcliValidator (European Case Law IDs), LegalDocMLValidator (German legal XML standard)
+- **Security**: XmlSanitizer (XXE/XML bomb protection)
+
+## 🔧 Build & Test Commands
 - **Build**: `mvn clean compile`
 - **Test all**: `mvn test`
 - **Test single**: `mvn test -Dtest=ClassName` or `mvn test -Dtest=ClassName#methodName`
 - **Run app**: `mvn spring-boot:run`
 - **Package**: `mvn clean package`
+- **H2 Console**: http://localhost:8080/h2-console (sa/blank password)
 
 ## Code Style Guidelines
 - **Java 17** with Spring Boot 3.2.2
