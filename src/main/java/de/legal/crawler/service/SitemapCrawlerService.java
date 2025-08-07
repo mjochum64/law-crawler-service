@@ -169,6 +169,16 @@ public class SitemapCrawlerService {
     }
     
     /**
+     * Normalize URL by removing all whitespace, newlines and invisible characters
+     */
+    private String normalizeUrl(String rawUrl) {
+        if (rawUrl == null) return null;
+        
+        // Remove all whitespace characters (spaces, tabs, newlines, etc.)
+        return rawUrl.replaceAll("\\s+", "").trim();
+    }
+    
+    /**
      * Document entry from sitemap
      */
     public static class DocumentEntry {
