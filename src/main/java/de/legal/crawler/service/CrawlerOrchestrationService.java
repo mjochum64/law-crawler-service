@@ -36,6 +36,7 @@ public class CrawlerOrchestrationService {
     private DocumentDownloadService downloadService;
     
     @Autowired
+    @Qualifier("legalDocumentRepository")
     private LegalDocumentRepository documentRepository;
     
     /**
