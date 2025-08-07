@@ -147,6 +147,8 @@ volumes:
     driver: local
   grafana_data:
     driver: local
+  loki_data:
+    driver: local
 
 networks:
   legal-crawler-network:
