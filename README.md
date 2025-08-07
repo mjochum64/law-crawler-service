@@ -47,6 +47,8 @@ docker-compose down
 - **API:** http://localhost:8080
 - **Nginx Gateway:** http://localhost:8888  
 - **Solr Admin:** http://localhost:8983/solr
+- **Grafana Dashboards:** http://localhost:3000 (admin/admin123)
+- **Prometheus Metrics:** http://localhost:9090
 
 ## 🏗️ Architektur
 
