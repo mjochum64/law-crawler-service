@@ -302,7 +302,7 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
     public Page<LegalDocument> findByCourtOrderByDecisionDateDesc(String court, Pageable pageable) {
         try {
             SolrQuery query = new SolrQuery("court:" + escapeQueryValue(court));
-            query.setSort("decision_date", SolrQuery.ORDER.desc);
+            query.addSort("decision_date", SolrQuery.ORDER.desc);
             query.setStart((int) pageable.getOffset());
             query.setRows(pageable.getPageSize());
             
