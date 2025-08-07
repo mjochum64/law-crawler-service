@@ -1,0 +1,76 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+  # Legal Crawler Application Logs
+  - job_name: legal-crawler-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: legal-crawler
+          service: crawler-app
+          __path__: /app/logs/*.log
+    pipeline_stages:
+      - match:
+          selector: '{job="legal-crawler"}'
+          stages:
+            - regex:
+                expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}) \[(?P<thread>[^\]]+)\] (?P<level>\w+)\s*\[(?P<document_id>[^\]]*)\] (?P<logger>[^\s]+) - (?P<message>.*)'
+            - labels:
+                level:
+                thread:
+                logger:
+                document_id:
+            - timestamp:
+                source: timestamp
+                format: '2006-01-02 15:04:05.000'
+      - match:
+          selector: '{level="ERROR"}'
+          stages:
+            - labels:
+                severity: error
+      - match:
+          selector: '{level="WARN"}'
+          stages:
+            - labels:
+                severity: warning
+      - match:
+          selector: '{level="INFO"}'
+          stages:
+            - labels:
+                severity: info
+      - match:
+          selector: '{level="DEBUG"}'
+          stages:
+            - labels:
+                severity: debug
+
+  # Crawler-specific log patterns
+  - job_name: legal-crawler-activity
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: legal-crawler-activity
+          service: crawler-app
+          __path__: /app/logs/*.log
+    pipeline_stages:
+      - match:
+          selector: '{job="legal-crawler-activity"} |~ "crawler|download|validation|sitemap"'
+          stages:
+            - regex:
+                expression: '^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}) .* - (?P<activity_type>(Starting|Completed|Failed)) (?P<operation>\w+).*'
+            - labels:
+                activity_type:
+                operation:
+            - timestamp:
+                source: timestamp
+                format: '2006-01-02 15:04:05.000'
