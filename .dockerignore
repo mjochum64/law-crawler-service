@@ -1,0 +1,70 @@
+# Docker ignore file for Legal Document Crawler
+
+# Git
+.git
+.gitignore
+
+# Maven
+target/
+!target/*.jar
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Data directories
+data/
+legal-documents/
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Scripts (except essential ones)
+scripts/
+
+# Documentation
+*.md
+docs/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# Application specific
+.claude/
+.claude-flow/
+solr-config/
+docker/
+
+# Test files
+src/test/
+
+# Node modules (if any)
+node_modules/
+
+# Python files (if any)
+__pycache__/
+*.pyc
+*.pyo
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Thumbs.db
