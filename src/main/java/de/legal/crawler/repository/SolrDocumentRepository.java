@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
  */
 @Repository
 @org.springframework.context.annotation.Profile("solr")
+@org.springframework.context.annotation.Primary
 public class SolrDocumentRepository implements LegalDocumentRepository {
 
     private static final Logger logger = LoggerFactory.getLogger(SolrDocumentRepository.class);
