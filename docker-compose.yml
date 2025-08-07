@@ -1,7 +1,8 @@
-version: '3.8'
+# Legal Document Crawler - Docker Compose Configuration
+# Solr-based setup with monitoring capabilities
 
 services:
-  # Apache Solr Service
+  # Apache Solr Service - Precreated core approach
   solr:
     image: solr:9.4.1
     container_name: legal-crawler-solr
@@ -9,31 +10,17 @@ services:
       - "8983:8983"
     environment:
       - SOLR_HEAP=2g
-      - SOLR_JAVA_MEM=-Xms512m -Xmx2g
     volumes:
       - solr_data:/var/solr
+    command: ["solr-precreate", "legal-documents"]
     networks:
       - legal-crawler-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8983/solr/admin/ping"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:8983/solr/legal-documents/admin/ping || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 60s
-
-  # Solr Collection Initializer (runs once)
-  solr-init:
-    image: solr:9.4.1
-    container_name: solr-init
-    volumes:
-      - ./docker/solr/init-collections.sh:/opt/init-collections.sh
-    command: ["/bin/bash", "/opt/init-collections.sh"]
-    depends_on:
-      solr:
-        condition: service_healthy
-    networks:
-      - legal-crawler-network
-    restart: "no"
 
   # Legal Document Crawler Application
   crawler-app:
@@ -43,13 +30,12 @@ services:
     container_name: legal-crawler-app
     ports:
       - "8080:8080"
-      - "8081:8081"  # Management port
+      - "8081:8081"
     environment:
       - SPRING_PROFILES_ACTIVE=docker,solr
       - SOLR_URL=http://solr:8983/solr
       - SOLR_COLLECTION=legal-documents
       - CRAWLER_STORAGE_TYPE=solr
-      - CRAWLER_STORAGE_BASE_PATH=/app/data/legal-documents
       - JAVA_OPTS=-Xms512m -Xmx2g -XX:+UseG1GC
     volumes:
       - crawler_data:/app/data
@@ -66,13 +52,12 @@ services:
       retries: 3
       start_period: 120s
 
-  # Nginx Reverse Proxy (Optional)
+  # Nginx Reverse Proxy
   nginx:
     image: nginx:alpine
     container_name: legal-crawler-nginx
     ports:
       - "80:80"
-      - "443:443"
     volumes:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
@@ -82,7 +67,7 @@ services:
       - legal-crawler-network
     restart: unless-stopped
 
-  # Monitoring with Prometheus (Optional)
+  # Monitoring with Prometheus
   prometheus:
     image: prom/prometheus:latest
     container_name: legal-crawler-prometheus
@@ -101,7 +86,7 @@ services:
     profiles:
       - monitoring
 
-  # Grafana Dashboard (Optional)
+  # Grafana Dashboard
   grafana:
     image: grafana/grafana:latest
     container_name: legal-crawler-grafana
