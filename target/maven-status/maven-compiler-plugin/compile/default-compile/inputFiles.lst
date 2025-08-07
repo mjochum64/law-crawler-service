@@ -1,3 +1,4 @@
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/repository/JpaLegalDocumentRepository.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/exception/XmlValidationException.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/validator/EcliValidator.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/SitemapCrawlerService.java
@@ -12,6 +13,7 @@
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/controller/CrawlerController.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/XmlValidationService.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/repository/BulkCrawlProgressRepository.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/repository/SolrDocumentRepository.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/ScheduledCrawlerService.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/service/SitemapDiscoveryService.java
 /home/mjochum/projekte/KI_TESTS/law-crawler-service/src/main/java/de/legal/crawler/util/XmlSanitizer.java

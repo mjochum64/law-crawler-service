@@ -6,13 +6,16 @@ de/legal/crawler/exception/XmlValidationException$ValidationError.class
 de/legal/crawler/service/XmlValidationService$ValidationSummary.class
 de/legal/crawler/service/SitemapCrawlerService$DocumentEntry.class
 de/legal/crawler/service/SitemapCrawlerService.class
+de/legal/crawler/service/SitemapDiscoveryService$SitemapValidationResult.class
 de/legal/crawler/validator/EcliValidator.class
 de/legal/crawler/controller/XmlValidationController$QuickValidationResponse.class
 de/legal/crawler/controller/XmlValidationController$ValidationResponse.class
+de/legal/crawler/repository/SolrDocumentRepository.class
 de/legal/crawler/validator/LegalDocMLValidator.class
 de/legal/crawler/service/SitemapDiscoveryService$SitemapDiscoveryResult.class
 de/legal/crawler/service/CrawlerOrchestrationService.class
 de/legal/crawler/service/DocumentDownloadService$StorageStats.class
+de/legal/crawler/repository/JpaLegalDocumentRepository.class
 de/legal/crawler/validator/LegalDocMLValidator$LegalDocMLValidationResult.class
 de/legal/crawler/controller/XmlValidationController.class
 de/legal/crawler/model/BulkCrawlProgress.class
@@ -32,6 +35,7 @@ de/legal/crawler/exception/XmlValidationException.class
 de/legal/crawler/service/DocumentDownloadService$ValidationAwareDownloadResult.class
 de/legal/crawler/service/XmlValidationService$ComprehensiveValidationResult.class
 de/legal/crawler/util/XmlSanitizer.class
+de/legal/crawler/service/SitemapDiscoveryService$SitemapValidationResult$ValidationEntry.class
 de/legal/crawler/repository/BulkCrawlProgressRepository.class
 de/legal/crawler/model/LegalDocument.class
 de/legal/crawler/service/ScheduledCrawlerService.class
