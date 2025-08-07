@@ -34,6 +34,9 @@ public class CrawlerController {
     @Autowired
     private DocumentDownloadService downloadService;
     
+    @Autowired
+    private SitemapDiscoveryService discoveryService;
+    
     /**
      * Start crawling for a specific date
      */
