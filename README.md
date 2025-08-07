@@ -165,6 +165,54 @@ solr_data:/var/solr/data/
 └── bverwg/       # Bundesverwaltungsgericht
 ```
 
+## 📊 Monitoring & Dashboards
+
+### 🚀 Monitoring-Stack starten
+```bash
+# Alle Services inklusive Monitoring starten
+docker-compose --profile monitoring up -d
+
+# Nur Monitoring-Services
+docker-compose --profile monitoring up -d prometheus grafana loki promtail
+```
+
+### 📈 Grafana Dashboards
+Nach dem Start verfügbar unter http://localhost:3000 (admin/admin123):
+
+1. **Legal Crawler System Dashboard**
+   - JVM Memory, CPU, Threads
+   - HTTP Request Metrics (Response Times, Status Codes) 
+   - Tomcat Connection Pool Stats
+
+2. **Legal Crawler Business Dashboard**  
+   - Document Download Counts
+   - Crawling Activity Timeline
+   - Search Request Statistics
+   - Court-specific Metrics
+
+3. **Legal Crawler Logs Dashboard**
+   - Real-time Log Streaming
+   - Error Log Analysis
+   - Log Level Distribution
+   - Crawler Activity Logs
+
+### 🔍 Log-Analyse
+```bash
+# Logs in Grafana → Explore → Loki
+{job="legal-crawler"}                           # Alle Crawler-Logs
+{job="legal-crawler", level="ERROR"}           # Nur Fehler
+{job="legal-crawler"} |~ "crawler|download"    # Crawler-Aktivitäten
+```
+
+### 📉 Load Testing & Daten-Generierung
+```bash
+# Einmalige Testdaten für Dashboards
+./generate_test_data.sh
+
+# Kontinuierliche Last (Hintergrund)
+./simple_load_test.sh &
+```
+
 ## 🔄 Container-Management
 
 ### Status prüfen
@@ -172,6 +220,7 @@ solr_data:/var/solr/data/
 docker-compose ps
 docker-compose logs crawler-app
 docker-compose logs solr
+docker-compose --profile monitoring logs grafana
 ```
 
 ### Einzelne Services neustarten
