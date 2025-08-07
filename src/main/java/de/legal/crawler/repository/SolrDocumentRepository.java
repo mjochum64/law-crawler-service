@@ -480,4 +480,30 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
             return Collections.emptyList();
         }
     }
+    
+    /**
+     * Helper method to safely get String field values from SolrDocument
+     * Handles both String values and ArrayList<String> values from Solr
+     */
+    private String getStringFieldValue(SolrDocument solrDoc, String fieldName) {
+        Object fieldValue = solrDoc.getFieldValue(fieldName);
+        if (fieldValue == null) {
+            return null;
+        }
+        
+        if (fieldValue instanceof String) {
+            return (String) fieldValue;
+        } else if (fieldValue instanceof java.util.Collection) {
+            // Handle multivalued fields - take the first value
+            java.util.Collection<?> collection = (java.util.Collection<?>) fieldValue;
+            if (!collection.isEmpty()) {
+                Object firstValue = collection.iterator().next();
+                return firstValue != null ? firstValue.toString() : null;
+            }
+            return null;
+        } else {
+            // Convert other types to string
+            return fieldValue.toString();
+        }
+    }
 }
