@@ -1,0 +1,176 @@
+# Solr-based Configuration for Legal Document Crawler
+# This configuration enables direct Solr integration instead of H2 database
+
+spring:
+  profiles:
+    active: solr
+  
+  # Disable JPA/Hibernate when using Solr
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  
+  # Disable H2 datasource
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    hikari:
+      enabled: false
+
+  # Enable Solr health monitoring
+  actuator:
+    health:
+      solr:
+        enabled: true
+
+# Crawler Configuration - Solr Mode
+crawler:
+  storage:
+    type: solr                                    # Enable Solr mode
+    base-path: ./legal-documents-backup           # File backup path (optional)
+  
+  user-agent: "LegalDocumentCrawler-Solr/1.0"
+  rate-limit-ms: 1000
+  
+  # Enhanced crawling for better Solr indexing
+  batch-size: 50                                  # Documents per batch
+  parallel-downloads: 5                           # Concurrent downloads
+  
+  # Solr-specific settings
+  solr:
+    enable-full-text-extraction: true
+    enable-structured-fields: true
+    enable-faceted-search: true
+
+# Solr Configuration
+solr:
+  url: http://localhost:8983/solr               # Solr server URL
+  collection: legal-documents                   # Collection name
+  connection-timeout: 10000                     # Connection timeout (ms)
+  socket-timeout: 30000                         # Socket timeout (ms)
+  
+  # Storage options
+  storage:
+    enable-file-backup: true                    # Keep XML files as backup
+    backup-cleanup-days: 30                     # Clean old backups after N days
+    
+  # Index optimization
+  index:
+    commit-within: 5000                         # Auto-commit within 5 seconds
+    soft-commit: true                           # Enable soft commits
+    optimize-schedule: "0 2 * * *"              # Daily optimization at 2 AM
+    
+  # Search configuration
+  search:
+    default-rows: 10                            # Default search results
+    max-rows: 100                               # Maximum results per query
+    facet-limit: 50                             # Facet value limit
+    highlight-enabled: true                     # Enable search highlighting
+
+# XML Validation Configuration
+validation:
+  xml:
+    enabled: true
+    async-validation: true                      # Non-blocking validation
+    validation-timeout-seconds: 30
+    strict-mode: false                          # Don't fail on validation warnings
+    
+    # Enhanced validation for Solr
+    extract-structured-data: true               # Extract fields for Solr
+    detect-document-type: true                  # Detect legal document types
+    validate-ecli: true                         # Validate ECLI identifiers
+
+# Scheduling Configuration
+scheduling:
+  enabled: true
+  daily-crawl: "0 1 * * *"                     # Daily at 1 AM
+  retry-failed: "0 */6 * * *"                  # Every 6 hours
+  index-optimization: "0 2 * * *"              # Daily at 2 AM
+
+# Monitoring and Logging
+logging:
+  level:
+    de.legal.crawler.service.SolrDocumentService: INFO
+    de.legal.crawler.repository.SolrDocumentRepository: INFO
+    de.legal.crawler.config.SolrConfiguration: INFO
+    org.apache.solr: WARN                       # Reduce Solr client logging
+    
+  # Structured logging for monitoring
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level [%X{documentId}] %logger{36} - %msg%n"
+
+# Management endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,solr
+  endpoint:
+    health:
+      show-details: always
+      
+  # Custom Solr metrics
+  metrics:
+    export:
+      solr:
+        enabled: true
+        connection-pool-metrics: true
+        query-metrics: true
+
+# Performance Tuning
+server:
+  tomcat:
+    threads:
+      max: 50                                   # Increase for parallel processing
+    connection-timeout: 60000                   # 60 second timeout
+
+# Security (if needed)
+# security:
+#   solr:
+#     username: ${SOLR_USERNAME:}
+#     password: ${SOLR_PASSWORD:}
+#     ssl:
+#       enabled: false
+#       trust-store: 
+#       trust-store-password:
+
+---
+# Development Profile Overrides
+spring:
+  profiles: development
+  
+solr:
+  url: http://localhost:8983/solr
+  collection: legal-documents-dev
+
+logging:
+  level:
+    de.legal.crawler: DEBUG
+    org.apache.solr: INFO
+
+---
+# Production Profile Overrides  
+spring:
+  profiles: production
+
+solr:
+  url: ${SOLR_URL:http://solr-cluster:8983/solr}
+  collection: ${SOLR_COLLECTION:legal-documents}
+  connection-timeout: 30000
+  socket-timeout: 60000
+
+crawler:
+  rate-limit-ms: 2000                           # Slower rate in production
+  parallel-downloads: 3                         # Conservative parallelism
+
+validation:
+  xml:
+    strict-mode: true                           # Strict validation in production
+
+logging:
+  level:
+    de.legal.crawler: INFO
+    org.apache.solr: WARN
