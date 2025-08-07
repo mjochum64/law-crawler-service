@@ -2,8 +2,6 @@
 # This configuration is used when running in Docker containers
 
 spring:
-  profiles:
-    active: docker,solr
   
   # JPA Configuration (disabled in Solr mode)
   jpa:
