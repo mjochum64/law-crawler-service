@@ -171,8 +171,12 @@ public class SitemapDiscoveryService {
             }
             
             // Wait for batch completion
-            CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
-                .get(discoveryTimeoutHours, TimeUnit.HOURS);
+            try {
+                CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
+                    .get(discoveryTimeoutHours, TimeUnit.HOURS);
+            } catch (Exception e) {
+                logger.warn("Batch completion interrupted: {}", e.getMessage());
+            }
             
             logger.debug("Batch {}/{} completed", i + 1, totalBatches);
         }
