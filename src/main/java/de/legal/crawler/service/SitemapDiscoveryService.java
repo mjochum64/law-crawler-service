@@ -482,6 +482,113 @@ public class SitemapDiscoveryService {
     }
     
     /**
+     * Test method to validate sitemap discovery optimizations
+     * This method will test recent dates and provide detailed feedback
+     */
+    public SitemapValidationResult validateOptimizations() {
+        logger.info("Starting sitemap discovery optimization validation");
+        
+        SitemapValidationResult result = new SitemapValidationResult();
+        LocalDate testDate = LocalDate.now().minusDays(1);
+        
+        // Test 1: Check if recent dates have gzip-compressed content
+        for (int i = 0; i < 10; i++) {
+            LocalDate currentDate = testDate.minusDays(i);
+            try {
+                String sitemapUrl = buildSitemapUrl(currentDate);
+                
+                HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(sitemapUrl))
+                    .header("User-Agent", userAgent)
+                    .header("Accept-Encoding", "gzip, deflate")
+                    .timeout(Duration.ofSeconds(15))
+                    .build();
+                    
+                HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+                
+                if (response.statusCode() == 200) {
+                    String contentEncoding = response.headers().firstValue("Content-Encoding").orElse("none");
+                    int contentLength = response.body().length;
+                    
+                    // Decompress and check content
+                    String xmlContent;
+                    if ("gzip".equalsIgnoreCase(contentEncoding)) {
+                        try (InputStream gzipStream = new GZIPInputStream(
+                            new ByteArrayInputStream(response.body()))) {
+                            xmlContent = new String(gzipStream.readAllBytes(), "UTF-8");
+                        }
+                    } else {
+                        xmlContent = new String(response.body(), "UTF-8");
+                    }
+                    
+                    boolean hasContent = xmlContent.contains("<sitemap>") && xmlContent.contains("<loc>");
+                    int decompressedLength = xmlContent.length();
+                    
+                    result.addTestResult(currentDate, true, contentEncoding, contentLength, decompressedLength, hasContent);
+                    
+                    logger.info("Date {}: EXISTS, encoding={}, compressed={}b, decompressed={}b, hasContent={}", 
+                               currentDate, contentEncoding, contentLength, decompressedLength, hasContent);
+                } else {
+                    result.addTestResult(currentDate, false, "none", 0, 0, false);
+                    logger.info("Date {}: NOT FOUND (HTTP {})", currentDate, response.statusCode());
+                }
+                
+                // Rate limiting
+                Thread.sleep(rateLimitMs);
+                
+            } catch (Exception e) {
+                result.addTestResult(currentDate, false, "error", 0, 0, false);
+                logger.warn("Date {}: ERROR - {}", currentDate, e.getMessage());
+            }
+        }
+        
+        logger.info("Validation completed: {}", result.getSummary());
+        return result;
+    }
+    
+    /**
+     * Result container for validation tests
+     */
+    public static class SitemapValidationResult {
+        private final List<ValidationEntry> entries = new ArrayList<>();
+        
+        public void addTestResult(LocalDate date, boolean exists, String encoding, 
+                                int compressedSize, int decompressedSize, boolean hasContent) {
+            entries.add(new ValidationEntry(date, exists, encoding, compressedSize, decompressedSize, hasContent));
+        }
+        
+        public String getSummary() {
+            long existingCount = entries.stream().filter(e -> e.exists).count();
+            long gzipCount = entries.stream().filter(e -> "gzip".equals(e.encoding)).count();
+            long contentCount = entries.stream().filter(e -> e.hasContent).count();
+            
+            return String.format("Tested %d dates: %d exist, %d gzipped, %d with content", 
+                               entries.size(), existingCount, gzipCount, contentCount);
+        }
+        
+        public List<ValidationEntry> getEntries() { return entries; }
+        
+        public static class ValidationEntry {
+            public final LocalDate date;
+            public final boolean exists;
+            public final String encoding;
+            public final int compressedSize;
+            public final int decompressedSize;
+            public final boolean hasContent;
+            
+            public ValidationEntry(LocalDate date, boolean exists, String encoding, 
+                                 int compressedSize, int decompressedSize, boolean hasContent) {
+                this.date = date;
+                this.exists = exists;
+                this.encoding = encoding;
+                this.compressedSize = compressedSize;
+                this.decompressedSize = decompressedSize;
+                this.hasContent = hasContent;
+            }
+        }
+    }
+    
+    /**
      * Cleanup resources
      */
     public void shutdown() {
