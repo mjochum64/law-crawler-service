@@ -12,8 +12,6 @@ services:
       - SOLR_JAVA_MEM=-Xms512m -Xmx2g
     volumes:
       - solr_data:/var/solr
-    command:
-      - solr-foreground
     networks:
       - legal-crawler-network
     healthcheck:

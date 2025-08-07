@@ -1,0 +1,172 @@
+# Docker-specific Spring Boot configuration
+# This configuration is used when running in Docker containers
+
+spring:
+  profiles:
+    active: docker,solr
+  
+  # JPA Configuration (disabled in Solr mode)
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    
+  # Datasource (minimal config, not used in Solr mode)  
+  datasource:
+    url: jdbc:h2:mem:dummy
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    hikari:
+      enabled: false
+
+  # Actuator configuration for Docker
+  actuator:
+    endpoints:
+      web:
+        base-path: /actuator
+        exposure:
+          include: health,info,metrics,prometheus,solr
+    health:
+      show-details: always
+    metrics:
+      export:
+        prometheus:
+          enabled: true
+
+# Server configuration optimized for Docker
+server:
+  port: 8080
+  address: 0.0.0.0
+  
+  # Management port for health checks and metrics
+  management:
+    port: 8081
+    address: 0.0.0.0
+    
+  # Tomcat optimization for container environment
+  tomcat:
+    threads:
+      max: 50
+      min-spare: 10
+    connection-timeout: 60000
+    max-connections: 1000
+    accept-count: 100
+
+# Crawler configuration for Docker environment
+crawler:
+  storage:
+    type: solr
+    base-path: /app/data/legal-documents
+    
+  user-agent: "LegalDocumentCrawler-Docker/1.0"
+  rate-limit-ms: 1000
+  batch-size: 50
+  parallel-downloads: 5
+  
+  # Docker-specific scheduling
+  scheduling:
+    enabled: true
+    daily-crawl: "0 1 * * *"
+    retry-failed: "0 */6 * * *"
+
+# Solr configuration for Docker network
+solr:
+  url: http://solr:8983/solr
+  collection: legal-documents
+  connection-timeout: 30000
+  socket-timeout: 60000
+  
+  storage:
+    enable-file-backup: true
+    backup-cleanup-days: 30
+    
+  index:
+    commit-within: 5000
+    soft-commit: true
+    
+  search:
+    default-rows: 10
+    max-rows: 100
+    facet-limit: 50
+    highlight-enabled: true
+
+# XML Validation
+validation:
+  xml:
+    enabled: true
+    async-validation: true
+    validation-timeout-seconds: 30
+    strict-mode: false
+    extract-structured-data: true
+    detect-document-type: true
+    validate-ecli: true
+
+# Logging configuration for Docker
+logging:
+  level:
+    root: INFO
+    de.legal.crawler: INFO
+    de.legal.crawler.service.SolrDocumentService: INFO
+    de.legal.crawler.repository.SolrDocumentRepository: INFO
+    org.apache.solr: WARN
+    org.springframework.web: WARN
+    
+  # File logging for Docker volumes
+  file:
+    path: /app/logs
+    name: /app/logs/crawler.log
+    
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{documentId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{documentId:-}] %logger{36} - %msg%n"
+    
+  # Log rotation
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 30
+      total-size-cap: 3GB
+
+# Management and monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /actuator
+      cors:
+        allowed-origins: "*"
+        allowed-methods: GET,POST
+    health:
+      show-details: always
+      
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    prometheus:
+      enabled: true
+      
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+      simple:
+        enabled: false
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        solr.query.time: true
+    tags:
+      application: legal-crawler
+      environment: docker
+
+# Docker-specific JVM settings (overridden by JAVA_OPTS)
+java:
+  memory:
+    initial: 512m
+    maximum: 2g
+  gc:
+    type: G1GC
