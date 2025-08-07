@@ -97,6 +97,7 @@ public class SitemapCrawlerService {
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(url))
             .header("User-Agent", userAgent)
+            .header("Accept-Encoding", "gzip, deflate")
             .GET()
             .build();
             
