@@ -157,9 +157,9 @@ public class SitemapCrawlerService {
             NodeList lastmodNodes = urlElement.getElementsByTagName("lastmod");
             
             if (locNodes.getLength() > 0) {
-                String documentUrl = locNodes.item(0).getTextContent();
+                String documentUrl = locNodes.item(0).getTextContent().trim();
                 String lastmod = lastmodNodes.getLength() > 0 ? 
-                    lastmodNodes.item(0).getTextContent() : null;
+                    lastmodNodes.item(0).getTextContent().trim() : null;
                 
                 documents.add(new DocumentEntry(documentUrl, lastmod));
             }
