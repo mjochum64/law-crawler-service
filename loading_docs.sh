@@ -3,8 +3,9 @@
 
 echo "🚀 Starte vollständiges Crawling aller verfügbaren Dokumente..."
 
-START_DATE="2025-07-01"  # Startdatum der Website
-END_DATE=$(date -I)      # Heute
+START_DATE="2025-06-01"  # Startdatum der Website
+#END_DATE=$(date -I)      # Heute
+END_DATE="2025-06-04"
 
 current_date=$START_DATE
 total_days=$(( ( $(date -d "$END_DATE" +%s) - $(date -d "$START_DATE" +%s) ) / 86400 ))
