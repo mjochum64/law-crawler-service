@@ -105,6 +105,13 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Apache Solr Client for Solr storage mode -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>9.4.1</version>
+        </dependency>
     </dependencies>
     
     <build>
