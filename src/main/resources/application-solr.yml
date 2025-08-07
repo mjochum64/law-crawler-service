@@ -1,0 +1,90 @@
+# Solr-specific Spring Boot configuration
+# This configuration is used when running with Solr storage
+
+spring:
+  # Disable JPA auto-configuration for Solr mode
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+      
+  # JPA disabled
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    
+  # No datasource needed
+  datasource:
+    hikari:
+      enabled: false
+
+# Solr configuration for Docker network
+solr:
+  url: ${SOLR_URL:http://solr:8983/solr}
+  collection: ${SOLR_COLLECTION:legal-documents}
+  connection-timeout: 30000
+  socket-timeout: 60000
+  
+  storage:
+    enable-file-backup: true
+    backup-cleanup-days: 30
+    
+  index:
+    commit-within: 5000
+    soft-commit: true
+    
+  search:
+    default-rows: 10
+    max-rows: 100
+    facet-limit: 50
+    highlight-enabled: true
+
+# Crawler configuration optimized for Solr
+crawler:
+  storage:
+    type: solr
+    base-path: /app/data/legal-documents
+    
+  user-agent: "LegalDocumentCrawler-Solr/1.0"
+  rate-limit-ms: 1000
+  batch-size: 50
+  parallel-downloads: 5
+  
+  # Solr-optimized scheduling
+  scheduling:
+    enabled: true
+    daily-crawl: "0 1 * * *"
+    retry-failed: "0 */6 * * *"
+
+# XML Validation optimized for Solr
+validation:
+  xml:
+    enabled: true
+    async-validation: true
+    validation-timeout-seconds: 30
+    strict-mode: false
+    extract-structured-data: true
+    detect-document-type: true
+    validate-ecli: true
+
+# Logging configuration for Solr mode
+logging:
+  level:
+    root: INFO
+    de.legal.crawler: INFO
+    de.legal.crawler.repository.SolrDocumentRepository: INFO
+    org.apache.solr: WARN
+    org.springframework.web: WARN
+    org.springframework.transaction: WARN
+    org.hibernate: OFF
+    
+  # File logging for Docker volumes
+  file:
+    path: /app/logs
+    name: /app/logs/crawler.log
+    
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{documentId:-}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{documentId:-}] %logger{36} - %msg%n"
