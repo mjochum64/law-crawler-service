@@ -83,16 +83,45 @@ When resuming work on this project, agents should:
 5. Test API endpoints at http://localhost:8080/api/crawler/status
 6. Review recent git commits for latest changes
 
+## Monitoring & Logging Infrastructure
+**Complete Observability Stack**: Prometheus + Grafana + Loki  
+**Metrics Endpoints**: 
+- `/actuator/prometheus` - Micrometer metrics for monitoring
+- `/actuator/health` - Container health checks
+- `/actuator/metrics` - Spring Boot actuator metrics
+
+**Grafana Dashboards** (Access: http://localhost:3000, admin/admin123):
+- **Legal Crawler System Dashboard**: JVM, HTTP, Performance, Tomcat metrics
+- **Legal Crawler Business Dashboard**: Document counts, crawling activity, search requests  
+- **Legal Crawler Logs Dashboard**: Real-time log analysis with filtering
+
+**Log Aggregation Stack**:
+- **Loki** (Port 3100): Log aggregation and storage
+- **Promtail**: Automatic log collection from `/app/logs/crawler.log`
+- **Structured Logging**: Parsed by thread, level, logger, document_id, message
+
+**Monitoring Services** (Docker Compose `--profile monitoring`):
+- **Prometheus** (Port 9090): Metrics collection and storage
+- **Grafana** (Port 3000): Visualization and dashboards
+- **Loki** (Port 3100): Log aggregation
+- **Promtail**: Log shipping agent
+
+## Test & Load Generation Scripts  
+- `generate_test_data.sh`: One-time comprehensive API testing (multiple endpoints)
+- `simple_load_test.sh`: Continuous background load generation
+- `continuous_load.sh`: Advanced load patterns with randomization
+
 ## Last Analysis Session
 **Date**: 2025-08-07  
-**Major Update**: Complete migration to Docker + Solr architecture  
-**Key Achievements**:
-- ✅ Full Docker Compose setup with Nginx, Solr, Spring Boot
-- ✅ Apache Solr 9.4.1 integration with dual storage (Solr + XML files)
-- ✅ Jetty HTTP Client dependencies resolved for SolrJ compatibility
-- ✅ ClassCastException fixed with robust field conversion
-- ✅ BulkCrawlerService made Solr-compatible with optional repository pattern
-- ✅ Intelligent sitemap discovery with gzip support and content validation
-- ✅ Profile-based configuration (docker, solr profiles)
-- ✅ Container health checks and persistent volumes
-**Current Status**: Production-ready containerized system with clean Solr collection
+**Latest Update**: Complete monitoring and logging infrastructure implementation  
+**Key Features Added**:
+- ✅ Prometheus metrics with Micrometer registry integration
+- ✅ Grafana dashboards for system and business monitoring
+- ✅ Loki + Promtail log aggregation pipeline  
+- ✅ Real-time log visualization in Grafana
+- ✅ Structured log parsing with labels (level, logger, thread, document_id)
+- ✅ Automated log forwarding from Spring Boot application
+- ✅ Load testing scripts for continuous monitoring data generation
+- ✅ Production-ready observability stack with Docker Compose profiles
+
+**Current Status**: Full-stack production system with comprehensive monitoring, metrics, and logging
