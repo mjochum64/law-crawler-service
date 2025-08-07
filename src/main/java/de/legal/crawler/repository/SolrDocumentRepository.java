@@ -340,7 +340,16 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
         try {
             SolrQuery query = new SolrQuery(queryString);
             if (sort != null) {
-                query.setSort(sort);
+                // Parse sort string like "field desc" or "field asc"
+                String[] sortParts = sort.split("\\s+");
+                if (sortParts.length >= 2) {
+                    String field = sortParts[0];
+                    String direction = sortParts[1].toLowerCase();
+                    SolrQuery.ORDER order = "desc".equals(direction) ? SolrQuery.ORDER.desc : SolrQuery.ORDER.asc;
+                    query.addSort(field, order);
+                } else if (sortParts.length == 1) {
+                    query.addSort(sortParts[0], SolrQuery.ORDER.asc);
+                }
             }
             query.setRows(1000); // Reasonable default limit
             
