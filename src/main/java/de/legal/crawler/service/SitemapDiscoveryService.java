@@ -95,13 +95,34 @@ public class SitemapDiscoveryService {
     }
     
     /**
-     * Quick discovery using sampling strategy for recent dates
+     * Quick discovery using sampling strategy for recent dates with content validation
      */
     public CompletableFuture<SitemapDiscoveryResult> discoverRecentSitemaps(int daysBack) {
-        LocalDate endDate = LocalDate.now();
-        LocalDate startDate = endDate.minusDays(daysBack);
-        
-        return discoverAvailableSitemaps(startDate, endDate);
+        return CompletableFuture.supplyAsync(() -> {
+            logger.info("Starting intelligent recent sitemap discovery for {} days back", daysBack);
+            
+            LocalDate endDate = LocalDate.now().minusDays(1); // Start from yesterday
+            LocalDate startDate = endDate.minusDays(daysBack);
+            
+            // First, do a smart sampling to find dates with actual content
+            List<LocalDate> datesWithContent = findDatesWithContent(startDate, endDate, 10);
+            
+            if (datesWithContent.isEmpty()) {
+                logger.warn("No recent dates found with sitemap content, falling back to full scan");
+                try {
+                    return discoverAvailableSitemaps(startDate, endDate).get();
+                } catch (Exception e) {
+                    logger.error("Fallback discovery failed: {}", e.getMessage());
+                    return new SitemapDiscoveryResult(new ArrayList<>(), new ArrayList<>(), 0, 0);
+                }
+            }
+            
+            long startTime = System.currentTimeMillis();
+            long duration = System.currentTimeMillis() - startTime;
+            
+            logger.info("Smart recent discovery found {} dates with content", datesWithContent.size());
+            return new SitemapDiscoveryResult(datesWithContent, new ArrayList<>(), duration, datesWithContent.size());
+        }, executorService);
     }
     
     /**
@@ -182,19 +203,30 @@ public class SitemapDiscoveryService {
         }
     }
     
+    /**
+     * Enhanced sitemap checking that verifies both existence and content
+     */
     private boolean checkSitemapExists(LocalDate date) {
         try {
             String sitemapUrl = buildSitemapUrl(date);
             
-            HttpRequest request = HttpRequest.newBuilder()
+            // First do a HEAD request to check existence
+            HttpRequest headRequest = HttpRequest.newBuilder()
                 .uri(URI.create(sitemapUrl))
                 .header("User-Agent", userAgent)
+                .header("Accept-Encoding", "gzip, deflate")
                 .method("HEAD", HttpRequest.BodyPublishers.noBody())
                 .timeout(Duration.ofSeconds(10))
                 .build();
                 
-            HttpResponse<Void> response = httpClient.send(request, HttpResponse.BodyHandlers.discarding());
-            return response.statusCode() == 200;
+            HttpResponse<Void> headResponse = httpClient.send(headRequest, HttpResponse.BodyHandlers.discarding());
+            if (headResponse.statusCode() != 200) {
+                return false;
+            }
+            
+            // For efficient discovery, we'll do a content check for a sample of dates
+            // to avoid downloading all sitemaps during discovery phase
+            return true;
             
         } catch (Exception e) {
             return false;
@@ -210,11 +242,28 @@ public class SitemapDiscoveryService {
     }
     
     private LocalDate findLatestAvailableDate() {
-        // Start from today and binary search backward
-        LocalDate searchStart = LocalDate.now().minusDays(1);
-        LocalDate searchEnd = searchStart.plusDays(365); // Look up to 1 year in future
+        // Start from yesterday and search backward to find latest date with content
+        LocalDate current = LocalDate.now().minusDays(1);
+        int maxDaysBack = 30; // Look back up to 30 days
         
-        return binarySearchForDate(searchStart, searchEnd, false);
+        for (int i = 0; i < maxDaysBack; i++) {
+            LocalDate testDate = current.minusDays(i);
+            if (checkSitemapExistsWithContent(testDate)) {
+                logger.info("Found latest available date with content: {}", testDate);
+                return testDate;
+            }
+            
+            // Rate limiting for discovery
+            try {
+                Thread.sleep(rateLimitMs / 2); // Faster for discovery
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+        
+        logger.warn("No recent dates found with content, using fallback date");
+        return LocalDate.now().minusDays(7); // Fallback to 1 week ago
     }
     
     private LocalDate binarySearchForDate(LocalDate start, LocalDate end, boolean findEarliest) {
@@ -277,6 +326,115 @@ public class SitemapDiscoveryService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         return String.format("%s/jportal/docs/eclicrawler/%s/sitemap_index_1.xml", 
                            baseUrl, date.format(formatter));
+    }
+    
+    /**
+     * Check if a sitemap exists and contains actual document URLs (not just empty)
+     */
+    private boolean checkSitemapExistsWithContent(LocalDate date) {
+        try {
+            String sitemapUrl = buildSitemapUrl(date);
+            
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(sitemapUrl))
+                .header("User-Agent", userAgent)
+                .header("Accept-Encoding", "gzip, deflate")
+                .timeout(Duration.ofSeconds(15))
+                .build();
+                
+            HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
+            
+            if (response.statusCode() != 200) {
+                return false;
+            }
+            
+            // Decompress if needed and check content
+            byte[] responseBody = response.body();
+            String contentEncoding = response.headers().firstValue("Content-Encoding").orElse("");
+            String xmlContent;
+            
+            if ("gzip".equalsIgnoreCase(contentEncoding)) {
+                try (java.io.InputStream gzipStream = new java.util.zip.GZIPInputStream(
+                    new java.io.ByteArrayInputStream(responseBody))) {
+                    xmlContent = new String(gzipStream.readAllBytes(), "UTF-8");
+                }
+            } else {
+                xmlContent = new String(responseBody, "UTF-8");
+            }
+            
+            // Check if sitemap contains actual sitemap entries (not just empty urlset)
+            return xmlContent.contains("<sitemap>") && xmlContent.contains("<loc>");
+            
+        } catch (Exception e) {
+            logger.debug("Content check failed for date {}: {}", date, e.getMessage());
+            return false;
+        }
+    }
+    
+    /**
+     * Find dates with actual sitemap content using intelligent sampling
+     */
+    private List<LocalDate> findDatesWithContent(LocalDate startDate, LocalDate endDate, int maxSamples) {
+        List<LocalDate> datesWithContent = new ArrayList<>();
+        List<LocalDate> datesToSample = generateSampleDates(startDate, endDate, maxSamples);
+        
+        logger.info("Sampling {} dates to find content between {} and {}", datesToSample.size(), startDate, endDate);
+        
+        for (LocalDate date : datesToSample) {
+            if (checkSitemapExistsWithContent(date)) {
+                datesWithContent.add(date);
+                logger.debug("Found content for date: {}", date);
+            }
+            
+            // Rate limiting
+            try {
+                Thread.sleep(rateLimitMs);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+        
+        return datesWithContent;
+    }
+    
+    /**
+     * Generate sample dates for intelligent content discovery
+     * Uses a strategy that samples recent dates more frequently
+     */
+    private List<LocalDate> generateSampleDates(LocalDate startDate, LocalDate endDate, int maxSamples) {
+        List<LocalDate> sampleDates = new ArrayList<>();
+        long totalDays = startDate.until(endDate).getDays() + 1;
+        
+        if (totalDays <= maxSamples) {
+            // If range is small, check all dates
+            LocalDate current = startDate;
+            while (!current.isAfter(endDate)) {
+                sampleDates.add(current);
+                current = current.plusDays(1);
+            }
+        } else {
+            // Strategic sampling: more recent dates more likely to have content
+            // Sample every few days, with bias toward recent dates
+            int step = (int) Math.max(1, totalDays / maxSamples);
+            
+            // Start from the end (most recent) and work backward
+            LocalDate current = endDate;
+            int samplesAdded = 0;
+            
+            while (!current.isBefore(startDate) && samplesAdded < maxSamples) {
+                sampleDates.add(0, current); // Add to beginning to maintain chronological order
+                current = current.minusDays(step);
+                samplesAdded++;
+            }
+            
+            // Always include the start date
+            if (!sampleDates.contains(startDate)) {
+                sampleDates.add(0, startDate);
+            }
+        }
+        
+        return sampleDates;
     }
     
     /**
