@@ -87,6 +87,36 @@ services:
     profiles:
       - monitoring
 
+  # Loki Log Aggregation
+  loki:
+    image: grafana/loki:latest
+    container_name: legal-crawler-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./docker/loki:/etc/loki
+      - loki_data:/loki
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - legal-crawler-network
+    profiles:
+      - monitoring
+
+  # Promtail Log Collection
+  promtail:
+    image: grafana/promtail:latest
+    container_name: legal-crawler-promtail
+    volumes:
+      - ./docker/promtail:/etc/promtail
+      - crawler_logs:/app/logs:ro
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - legal-crawler-network
+    depends_on:
+      - loki
+    profiles:
+      - monitoring
+
   # Grafana Dashboard
   grafana:
     image: grafana/grafana:latest
@@ -101,6 +131,8 @@ services:
       - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
     networks:
       - legal-crawler-network
+    depends_on:
+      - loki
     profiles:
       - monitoring
 
