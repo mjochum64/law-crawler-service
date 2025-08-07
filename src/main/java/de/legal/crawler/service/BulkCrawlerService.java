@@ -96,7 +96,6 @@ public class BulkCrawlerService {
      * Start a bulk crawl operation for a specific date range
      */
     @Async
-    @Transactional
     public CompletableFuture<String> startDateRangeBulkCrawl(LocalDate startDate, LocalDate endDate, 
                                                            BulkCrawlConfiguration config) {
         String operationId = generateOperationId();
@@ -131,7 +130,6 @@ public class BulkCrawlerService {
     /**
      * Pause a running bulk crawl operation
      */
-    @Transactional
     public boolean pauseBulkCrawl(String operationId) {
         logger.info("Pausing bulk crawl operation: {}", operationId);
         
@@ -156,7 +154,6 @@ public class BulkCrawlerService {
      * Resume a paused bulk crawl operation
      */
     @Async
-    @Transactional
     public CompletableFuture<Boolean> resumeBulkCrawl(String operationId) {
         logger.info("Resuming bulk crawl operation: {}", operationId);
         
@@ -186,7 +183,6 @@ public class BulkCrawlerService {
     /**
      * Cancel a bulk crawl operation
      */
-    @Transactional
     public boolean cancelBulkCrawl(String operationId) {
         logger.info("Cancelling bulk crawl operation: {}", operationId);
         
@@ -240,7 +236,6 @@ public class BulkCrawlerService {
     /**
      * Clean up old completed operations
      */
-    @Transactional
     public int cleanupOldOperations(int daysToKeep) {
         LocalDateTime beforeTime = LocalDateTime.now().minusDays(daysToKeep);
         List<BulkCrawlProgress> toDelete = progressRepository.findCompletedOperations(beforeTime, LocalDateTime.now());
@@ -255,7 +250,6 @@ public class BulkCrawlerService {
     /**
      * Handle stuck operations (running for too long)
      */
-    @Transactional
     public int handleStuckOperations() {
         LocalDateTime stuckThreshold = LocalDateTime.now().minusHours(stuckOperationTimeoutHours);
         List<BulkCrawlProgress> stuckOps = progressRepository.findStuckOperations(stuckThreshold);
