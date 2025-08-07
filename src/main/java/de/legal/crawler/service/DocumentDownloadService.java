@@ -1,12 +1,15 @@
 package de.legal.crawler.service;
 
 import de.legal.crawler.model.LegalDocument;
+import de.legal.crawler.repository.LegalDocumentRepository;
 import de.legal.crawler.exception.XmlValidationException;
 import de.legal.crawler.service.XmlValidationService.ComprehensiveValidationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
