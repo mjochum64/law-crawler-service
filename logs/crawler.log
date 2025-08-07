@@ -2181,3 +2181,10 @@ https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KSRE125601
 2025-08-07 07:34:29 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Updated document KSRE125601231 with ECLI: ECLI:DE:BSG:2024:111224BB6KA824B0
 2025-08-07 07:34:29 [ForkJoinPool.commonPool-worker-1] WARN  d.l.c.s.DocumentDownloadService - Document KSRE125601231 has validation warnings but proceeding: []
 2025-08-07 07:34:29 [ForkJoinPool.commonPool-worker-1] WARN  d.l.c.s.DocumentDownloadService - Validation errors for document KSRE125601231: [XML structure validation failed: DOCTYPE is disallowed when the feature "http://apache.org/xml/features/disallow-doctype-decl" set to true., Sanitization failed: DOCTYPE declaration detected]
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-07 08:01:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
