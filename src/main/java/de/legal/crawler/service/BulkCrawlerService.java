@@ -114,6 +114,11 @@ public class BulkCrawlerService {
     @Async
     public CompletableFuture<String> startDateRangeBulkCrawl(LocalDate startDate, LocalDate endDate, 
                                                            BulkCrawlConfiguration config) {
+        if (!isBulkCrawlSupported()) {
+            logger.warn("Bulk crawl operations are not supported in Solr mode");
+            return CompletableFuture.completedFuture("UNSUPPORTED");
+        }
+        
         String operationId = generateOperationId();
         logger.info("Starting date range bulk crawl operation: {} ({} to {})", operationId, startDate, endDate);
         
