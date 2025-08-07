@@ -153,4 +153,26 @@ public class CrawlerController {
             ));
         }
     }
+    
+    /**
+     * Test sitemap discovery optimizations
+     */
+    @GetMapping("/test/sitemap-optimizations")
+    public ResponseEntity<Map<String, Object>> testSitemapOptimizations() {
+        try {
+            SitemapDiscoveryService.SitemapValidationResult result = discoveryService.validateOptimizations();
+            
+            return ResponseEntity.ok(Map.of(
+                "summary", result.getSummary(),
+                "details", result.getEntries(),
+                "timestamp", System.currentTimeMillis()
+            ));
+            
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of(
+                "error", "Failed to test sitemap optimizations",
+                "message", e.getMessage()
+            ));
+        }
+    }
 }
