@@ -59,6 +59,13 @@ public class BulkCrawlerService {
     private final ConcurrentHashMap<String, AtomicBoolean> activeOperations = new ConcurrentHashMap<>();
     
     /**
+     * Check if bulk crawl operations are supported in current mode
+     */
+    private boolean isBulkCrawlSupported() {
+        return progressRepository != null && !environment.acceptsProfiles("solr");
+    }
+    
+    /**
      * Start a full bulk crawl operation for all available documents
      */
     @Async
