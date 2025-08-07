@@ -3,6 +3,7 @@ package de.legal.crawler.controller;
 import de.legal.crawler.model.LegalDocument;
 import de.legal.crawler.service.CrawlerOrchestrationService;
 import de.legal.crawler.service.DocumentDownloadService;
+import de.legal.crawler.service.SitemapDiscoveryService;
 import de.legal.crawler.repository.LegalDocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
