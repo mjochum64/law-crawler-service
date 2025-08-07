@@ -112,6 +112,28 @@
             <artifactId>solr-solrj</artifactId>
             <version>9.4.1</version>
         </dependency>
+        
+        <!-- Jetty HTTP Client Dependencies (required by SolrJ 9.4.1) -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-client</artifactId>
+            <version>11.0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>11.0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-io</artifactId>
+            <version>11.0.18</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-http</artifactId>
+            <version>11.0.18</version>
+        </dependency>
     </dependencies>
     
     <build>
