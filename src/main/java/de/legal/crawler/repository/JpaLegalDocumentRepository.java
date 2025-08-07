@@ -15,7 +15,7 @@ import java.util.Optional;
 /**
  * JPA Repository interface for LegalDocument entities (H2 database mode)
  */
-@Repository
+@Repository("jpaLegalDocumentRepository")
 @org.springframework.context.annotation.Profile("!solr")
 public interface JpaLegalDocumentRepository extends JpaRepository<LegalDocument, Long>, LegalDocumentRepository {
 
