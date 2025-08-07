@@ -1,30 +1,30 @@
-2025-08-06 13:11:53 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 83591 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
-2025-08-06 13:11:53 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-08-06 13:11:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-08-06 13:11:53 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
-2025-08-06 13:11:53 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-08-06 13:11:53 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-08-06 13:11:53 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
-2025-08-06 13:11:53 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-08-06 13:11:53 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 532 ms
-2025-08-06 13:11:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-08-06 13:11:53 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
-2025-08-06 13:11:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-08-06 13:11:53 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
-2025-08-06 13:11:53 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-08-06 13:11:53 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
-2025-08-06 13:11:53 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-08-06 13:11:54 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-08-06 13:11:54 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-06 13:11:54 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-08-06 13:11:54 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-08-06 13:11:54 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-08-06 13:11:54 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-06 13:11:54 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
-2025-08-06 13:11:54 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2025-08-06 13:11:54 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
-2025-08-06 13:11:54 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
-2025-08-06 13:11:54 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+2025-08-07 06:20:25 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 12144 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
+2025-08-07 06:20:25 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-07 06:20:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-07 06:20:26 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 2 JPA repository interfaces.
+2025-08-07 06:20:26 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-08-07 06:20:26 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-07 06:20:26 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2025-08-07 06:20:26 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-07 06:20:26 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 600 ms
+2025-08-07 06:20:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:20:26 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
+2025-08-07 06:20:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-07 06:20:26 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
+2025-08-07 06:20:26 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-07 06:20:26 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-08-07 06:20:26 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-07 06:20:26 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-07 06:20:26 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 06:20:27 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 06:20:27 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 06:20:27 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-07 06:20:27 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-07 06:20:27 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+2025-08-07 06:20:27 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-08-07 06:20:27 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+2025-08-07 06:20:27 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2025-08-07 06:20:27 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -32,51 +32,458 @@
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-2025-08-06 13:11:54 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-2025-08-06 13:11:54 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
-2025-08-06 13:11:54 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2f3181d9
-2025-08-06 13:11:54 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
-2025-08-06 13:11:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-08-06 13:11:55 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
-2025-08-06 13:11:55 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 1.993 seconds (process running for 2.107)
-2025-08-06 13:11:55 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 178 MB / 544 MB
-2025-08-06 13:11:58 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-08-06 13:11:58 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-08-06 13:11:58 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-08-06 13:11:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2025-08-06 13:15:58 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 86090 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
-2025-08-06 13:15:58 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2025-08-06 13:15:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-08-06 13:15:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 1 JPA repository interface.
-2025-08-06 13:15:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-08-06 13:15:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-08-06 13:15:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
-2025-08-06 13:15:59 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-08-06 13:15:59 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 509 ms
-2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
-2025-08-06 13:15:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-08-06 13:15:59 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
-2025-08-06 13:15:59 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-08-06 13:15:59 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
-2025-08-06 13:15:59 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-08-06 13:15:59 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-08-06 13:15:59 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-06 13:15:59 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-08-06 13:15:59 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-08-06 13:15:59 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-08-06 13:16:00 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
-2025-08-06 13:16:00 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
-2025-08-06 13:16:00 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
-2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+2025-08-07 06:20:27 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-08-07 06:20:27 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+2025-08-07 06:20:27 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@38a36f64
+2025-08-07 06:20:27 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-08-07 06:20:27 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-08-07 06:20:27 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-08-07 06:20:27 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 2.307 seconds (process running for 2.43)
+2025-08-07 06:20:28 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 274 MB / 552 MB
+2025-08-07 06:20:40 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-07 06:20:40 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-07 06:20:40 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-07 06:20:40 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-08-05
+2025-08-07 06:20:40 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_index_1.xml
+2025-08-07 06:20:40 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-08-05
+2025-08-07 06:20:40 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
+2025-08-07 06:20:42 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml: Content is not allowed in prolog.
+2025-08-07 06:20:42 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
+2025-08-07 06:20:42 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-05: 0 new, 0 updated, 0 failed
+2025-08-07 06:21:22 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 13133 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
+2025-08-07 06:21:22 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-07 06:21:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-07 06:21:22 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-08-07 06:21:22 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-08-07 06:21:22 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-07 06:21:22 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2025-08-07 06:21:22 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-07 06:21:22 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 512 ms
+2025-08-07 06:21:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:21:23 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.getConnectionUrl(H2ConsoleAutoConfiguration.java:94)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:261)
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:261)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.logDataSources(H2ConsoleAutoConfiguration.java:86)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:69)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.withThreadContextClassLoader(H2ConsoleAutoConfiguration.java:78)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.h2Console(H2ConsoleAutoConfiguration.java:69)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:647)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:639)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1164)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:204)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:201)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:85)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4866)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:845)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1332)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1322)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:240)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:433)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:917)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:488)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:126)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:105)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:499)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:218)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:618)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at de.legal.crawler.LawCrawlerServiceApplication.main(LawCrawlerServiceApplication.java:16)
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 88 common frames omitted
+2025-08-07 06:21:23 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-07 06:21:24 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-08-07 06:21:24 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-07 06:21:24 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-07 06:21:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:21:25 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:129)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at de.legal.crawler.LawCrawlerServiceApplication.main(LawCrawlerServiceApplication.java:16)
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 53 common frames omitted
+2025-08-07 06:21:25 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
+java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(java.sql.SQLException, String)" because the return value of "org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.sqlExceptionHelper()" is null
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:129)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at de.legal.crawler.LawCrawlerServiceApplication.main(LawCrawlerServiceApplication.java:16)
+2025-08-07 06:21:25 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 06:21:25 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 06:21:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:21:26 [main] ERROR com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63)
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:98)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at de.legal.crawler.LawCrawlerServiceApplication.main(LawCrawlerServiceApplication.java:16)
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 57 common frames omitted
+2025-08-07 06:21:26 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 90020, SQLState: 90020
+2025-08-07 06:21:26 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+2025-08-07 06:21:26 [main] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [n/a]
+2025-08-07 06:21:26 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [n/a]
+2025-08-07 06:21:26 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-08-07 06:21:26 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-08-07 06:21:26 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [n/a]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at de.legal.crawler.LawCrawlerServiceApplication.main(LawCrawlerServiceApplication.java:16)
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [n/a]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769)
+	... 16 common frames omitted
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution [Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]] [n/a]
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:51)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63)
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:98)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:376)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 20 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Datenbank wird wahrscheinlich bereits benutzt: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Mögliche Lösungen: alle Verbindungen schliessen; Server Modus verwenden
+Database may be already in use: "/home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:428)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46)
+	... 40 common frames omitted
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /home/mjochum/projekte/KI_TESTS/law-crawler-service/data/legal-documents.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 57 common frames omitted
+2025-08-07 06:30:56 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 14180 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
+2025-08-07 06:30:56 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-07 06:30:56 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-07 06:30:56 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-08-07 06:30:56 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-08-07 06:30:56 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-07 06:30:56 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2025-08-07 06:30:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-07 06:30:56 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 506 ms
+2025-08-07 06:30:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:30:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
+2025-08-07 06:30:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-07 06:30:56 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
+2025-08-07 06:30:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-07 06:30:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-08-07 06:30:56 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-07 06:30:56 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-07 06:30:56 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 06:30:57 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 06:30:57 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 06:30:57 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-07 06:30:57 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-07 06:30:57 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+2025-08-07 06:30:57 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-08-07 06:30:57 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+2025-08-07 06:30:57 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2025-08-07 06:30:57 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
   NOT STARTED.
   Currently in standby mode.
@@ -84,57 +491,159 @@
   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
   Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
 
-2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
-2025-08-06 13:16:00 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
-2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@8b3ea30
-2025-08-06 13:16:00 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
-2025-08-06 13:16:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
-2025-08-06 13:16:00 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
-2025-08-06 13:16:00 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 1.938 seconds (process running for 2.046)
-2025-08-06 13:16:00 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 199 MB / 552 MB
-2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-08-06 13:16:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2025-08-06 13:16:43 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2024-08-06
-2025-08-06 13:16:43 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_index_1.xml
-2025-08-06 13:16:43 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2024-08-06
-2025-08-06 13:16:43 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml
-2025-08-06 13:16:45 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:16:45 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/06/sitemap_1.xml
-2025-08-06 13:16:45 [http-nio-8080-exec-2] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2024-08-06: 0 new, 0 updated, 0 failed
-2025-08-06 13:17:05 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2024-08-01
-2025-08-06 13:17:05 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_index_1.xml
-2025-08-06 13:17:05 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2024-08-01
-2025-08-06 13:17:05 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml
-2025-08-06 13:17:07 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:17:07 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2024/08/01/sitemap_1.xml
-2025-08-06 13:17:07 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2024-08-01: 0 new, 0 updated, 0 failed
-2025-08-06 13:17:13 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-08-01
-2025-08-06 13:17:13 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_index_1.xml
-2025-08-06 13:17:13 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-08-01
-2025-08-06 13:17:13 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml
-2025-08-06 13:17:15 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/01/sitemap_1.xml
-2025-08-06 13:17:15 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-01: 0 new, 0 updated, 0 failed
-2025-08-06 13:21:37 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-08-05
-2025-08-06 13:21:37 [ForkJoinPool.commonPool-worker-3] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_index_1.xml
-2025-08-06 13:21:37 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-08-05
-2025-08-06 13:21:37 [ForkJoinPool.commonPool-worker-3] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
-2025-08-06 13:21:39 [ForkJoinPool.commonPool-worker-3] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/08/05/sitemap_1.xml
-2025-08-06 13:21:39 [http-nio-8080-exec-7] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-08-05: 0 new, 0 updated, 0 failed
-2025-08-06 13:22:10 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
-2025-08-06 13:26:49 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-07-01
-2025-08-06 13:26:49 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_index_1.xml
-2025-08-06 13:26:49 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-07-01
-2025-08-06 13:26:49 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml
-2025-08-06 13:26:51 [ForkJoinPool.commonPool-worker-5] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:26:51 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/01/sitemap_1.xml
-2025-08-06 13:26:51 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-07-01: 0 new, 0 updated, 0 failed
-2025-08-06 13:27:21 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-07-02
-2025-08-06 13:27:21 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_index_1.xml
-2025-08-06 13:27:21 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-07-02
-2025-08-06 13:27:21 [ForkJoinPool.commonPool-worker-5] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml
-2025-08-06 13:27:24 [ForkJoinPool.commonPool-worker-5] ERROR d.l.c.service.SitemapCrawlerService - Failed to fetch sitemap https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml: Content is not allowed in prolog.
-2025-08-06 13:27:24 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/07/02/sitemap_1.xml
-2025-08-06 13:27:24 [http-nio-8080-exec-5] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-07-02: 0 new, 0 updated, 0 failed
+2025-08-07 06:30:57 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-08-07 06:30:57 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+2025-08-07 06:30:57 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@1d57b043
+2025-08-07 06:30:57 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-08-07 06:30:57 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-08-07 06:30:57 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-08-07 06:30:57 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 2.035 seconds (process running for 2.141)
+2025-08-07 06:30:57 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 93 MB / 560 MB
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-07 06:31:09 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-07 06:31:33 [main] INFO  d.l.c.LawCrawlerServiceApplication - Starting LawCrawlerServiceApplication using Java 21.0.6 with PID 14509 (/home/mjochum/projekte/KI_TESTS/law-crawler-service/target/classes started by mjochum in /home/mjochum/projekte/KI_TESTS/law-crawler-service)
+2025-08-07 06:31:33 [main] INFO  d.l.c.LawCrawlerServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-07 06:31:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-07 06:31:34 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-08-07 06:31:34 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-08-07 06:31:34 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-07 06:31:34 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2025-08-07 06:31:34 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-07 06:31:34 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 503 ms
+2025-08-07 06:31:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-07 06:31:34 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/legal-documents user=SA
+2025-08-07 06:31:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-07 06:31:34 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/legal-documents'
+2025-08-07 06:31:34 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-07 06:31:34 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2025-08-07 06:31:34 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-07 06:31:34 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-07 06:31:34 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 06:31:35 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 06:31:35 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 06:31:35 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-07 06:31:35 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-07 06:31:35 [main] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+2025-08-07 06:31:35 [main] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-08-07 06:31:35 [main] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+2025-08-07 06:31:35 [main] INFO  org.quartz.simpl.RAMJobStore - RAMJobStore initialized.
+2025-08-07 06:31:35 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-08-07 06:31:35 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-08-07 06:31:35 [main] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+2025-08-07 06:31:35 [main] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@3402004f
+2025-08-07 06:31:35 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-08-07 06:31:35 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-08-07 06:31:35 [main] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-08-07 06:31:35 [main] INFO  d.l.c.LawCrawlerServiceApplication - Started LawCrawlerServiceApplication in 2.018 seconds (process running for 2.125)
+2025-08-07 06:31:35 [scheduling-1] INFO  d.l.c.s.ScheduledCrawlerService - System health - Memory usage: 266 MB / 552 MB
+2025-08-07 06:32:15 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-07 06:32:15 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-07 06:32:15 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-07 06:32:15 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-06-01
+2025-08-07 06:32:15 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/01/sitemap_index_1.xml
+2025-08-07 06:32:15 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-06-01
+2025-08-07 06:32:15 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/01/sitemap_1.xml
+2025-08-07 06:32:17 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 0 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/01/sitemap_1.xml
+2025-08-07 06:32:17 [http-nio-8080-exec-1] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-06-01: 0 new, 0 updated, 0 failed
+2025-08-07 06:32:47 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Starting crawling orchestration for date: 2025-06-02
+2025-08-07 06:32:47 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap index from: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/02/sitemap_index_1.xml
+2025-08-07 06:32:47 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Found 1 sitemaps for date 2025-06-02
+2025-08-07 06:32:47 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.service.SitemapCrawlerService - Fetching sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/02/sitemap_1.xml
+2025-08-07 06:32:50 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Processing 11 documents from sitemap: https://www.rechtsprechung-im-internet.de/jportal/docs/eclicrawler/2025/06/02/sitemap_1.xml
+2025-08-07 06:32:50 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: JURE259031891 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=JURE259031891&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:52 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document JURE259031891: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=JURE259031891&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:52 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document JURE259031891: java.lang.RuntimeException: Download failed for document: JURE259031891
+2025-08-07 06:32:52 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KARE600070389 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KARE600070389&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:54 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KARE600070389: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KARE600070389&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:54 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KARE600070389: java.lang.RuntimeException: Download failed for document: KARE600070389
+2025-08-07 06:32:54 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KARE600070395 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KARE600070395&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:56 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KARE600070395: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KARE600070395&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:56 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KARE600070395: java.lang.RuntimeException: Download failed for document: KARE600070395
+2025-08-07 06:32:56 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712562025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712562025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:58 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712562025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712562025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:32:58 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712562025: java.lang.RuntimeException: Download failed for document: KORE712562025
+2025-08-07 06:32:58 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712702025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712702025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:00 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712702025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712702025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:00 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712702025: java.lang.RuntimeException: Download failed for document: KORE712702025
+2025-08-07 06:33:00 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712712025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712712025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:02 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712712025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712712025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:02 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712712025: java.lang.RuntimeException: Download failed for document: KORE712712025
+2025-08-07 06:33:02 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712722025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712722025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:04 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712722025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712722025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:04 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712722025: java.lang.RuntimeException: Download failed for document: KORE712722025
+2025-08-07 06:33:04 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712752025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712752025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:06 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712752025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712752025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:06 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712752025: java.lang.RuntimeException: Download failed for document: KORE712752025
+2025-08-07 06:33:06 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712762025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712762025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:08 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712762025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712762025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:08 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712762025: java.lang.RuntimeException: Download failed for document: KORE712762025
+2025-08-07 06:33:08 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KORE712772025 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712772025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:10 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KORE712772025: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KORE712772025&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:10 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KORE712772025: java.lang.RuntimeException: Download failed for document: KORE712772025
+2025-08-07 06:33:10 [ForkJoinPool.commonPool-worker-1] INFO  d.l.c.s.DocumentDownloadService - Downloading document: KSRE125601231 from 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KSRE125601231&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:12 [ForkJoinPool.commonPool-worker-1] ERROR d.l.c.s.DocumentDownloadService - Failed to download document KSRE125601231: Illegal character in scheme name at index 0: 
+https://www.rechtsprechung-im-internet.de/jportal/?quelle=jlink&docid=KSRE125601231&psml=bsjrsprod.psml&max=true
+
+2025-08-07 06:33:12 [http-nio-8080-exec-3] ERROR d.l.c.s.CrawlerOrchestrationService - Failed to download document KSRE125601231: java.lang.RuntimeException: Download failed for document: KSRE125601231
+2025-08-07 06:33:12 [http-nio-8080-exec-3] INFO  d.l.c.s.CrawlerOrchestrationService - Crawling completed for 2025-06-02: 11 new, 0 updated, 11 failed
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  org.quartz.core.QuartzScheduler - Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-07 06:33:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
