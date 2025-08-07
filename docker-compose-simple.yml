@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Apache Solr Service - Simple standalone mode
+  # Apache Solr Service - Simple standalone mode with precreated core
   solr:
     image: solr:9.4.1
     container_name: legal-crawler-solr
@@ -11,10 +11,11 @@ services:
       - SOLR_HEAP=2g
     volumes:
       - solr_data:/var/solr
+    command: ["solr-precreate", "legal-documents"]
     networks:
       - legal-crawler-network
     healthcheck:
-      test: ["CMD-SHELL", "curl -sf http://localhost:8983/solr/admin/info/system || exit 1"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:8983/solr/legal-documents/admin/ping || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
