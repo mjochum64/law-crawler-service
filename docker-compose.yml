@@ -1,0 +1,146 @@
+version: '3.8'
+
+services:
+  # Apache Solr Service
+  solr:
+    image: solr:9.4.1
+    container_name: legal-crawler-solr
+    ports:
+      - "8983:8983"
+    environment:
+      - SOLR_HEAP=2g
+      - SOLR_JAVA_MEM=-Xms512m -Xmx2g
+    volumes:
+      - solr_data:/var/solr
+      - ./docker/solr/security.json:/var/solr/data/security.json
+      - ./docker/solr/solr.xml:/var/solr/data/solr.xml
+      - ./docker/solr/configsets:/var/solr/data/configsets
+    command:
+      - solr-foreground
+    networks:
+      - legal-crawler-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8983/solr/admin/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Legal Document Crawler Application
+  crawler-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: legal-crawler-app
+    ports:
+      - "8080:8080"
+      - "8081:8081"  # Management port
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,solr
+      - SOLR_URL=http://solr:8983/solr
+      - SOLR_COLLECTION=legal-documents
+      - CRAWLER_STORAGE_TYPE=solr
+      - CRAWLER_STORAGE_BASE_PATH=/app/data/legal-documents
+      - JAVA_OPTS=-Xms512m -Xmx2g -XX:+UseG1GC
+    volumes:
+      - crawler_data:/app/data
+      - crawler_logs:/app/logs
+    depends_on:
+      solr:
+        condition: service_healthy
+    networks:
+      - legal-crawler-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+  # Solr Collection Initializer (runs once)
+  solr-init:
+    image: solr:9.4.1
+    container_name: solr-init
+    volumes:
+      - ./docker/solr/init-collections.sh:/opt/init-collections.sh
+      - ./docker/solr/schema.json:/opt/schema.json
+      - ./docker/solr/solrconfig.xml:/opt/solrconfig.xml
+    command: ["/bin/bash", "/opt/init-collections.sh"]
+    depends_on:
+      solr:
+        condition: service_healthy
+    networks:
+      - legal-crawler-network
+    restart: "no"
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: legal-crawler-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - crawler-app
+      - solr
+    networks:
+      - legal-crawler-network
+    restart: unless-stopped
+
+  # Monitoring with Prometheus (Optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: legal-crawler-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+    networks:
+      - legal-crawler-network
+    profiles:
+      - monitoring
+
+  # Grafana Dashboard (Optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: legal-crawler-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - legal-crawler-network
+    profiles:
+      - monitoring
+
+volumes:
+  solr_data:
+    driver: local
+  crawler_data:
+    driver: local
+  crawler_logs:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  legal-crawler-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
