@@ -152,6 +152,11 @@ public class BulkCrawlerService {
      * Pause a running bulk crawl operation
      */
     public boolean pauseBulkCrawl(String operationId) {
+        if (!isBulkCrawlSupported()) {
+            logger.warn("Bulk crawl operations are not supported in Solr mode");
+            return false;
+        }
+        
         logger.info("Pausing bulk crawl operation: {}", operationId);
         
         Optional<BulkCrawlProgress> progressOpt = progressRepository.findByOperationId(operationId);
@@ -176,6 +181,11 @@ public class BulkCrawlerService {
      */
     @Async
     public CompletableFuture<Boolean> resumeBulkCrawl(String operationId) {
+        if (!isBulkCrawlSupported()) {
+            logger.warn("Bulk crawl operations are not supported in Solr mode");
+            return CompletableFuture.completedFuture(false);
+        }
+        
         logger.info("Resuming bulk crawl operation: {}", operationId);
         
         Optional<BulkCrawlProgress> progressOpt = progressRepository.findByOperationId(operationId);
@@ -205,6 +215,11 @@ public class BulkCrawlerService {
      * Cancel a bulk crawl operation
      */
     public boolean cancelBulkCrawl(String operationId) {
+        if (!isBulkCrawlSupported()) {
+            logger.warn("Bulk crawl operations are not supported in Solr mode");
+            return false;
+        }
+        
         logger.info("Cancelling bulk crawl operation: {}", operationId);
         
         Optional<BulkCrawlProgress> progressOpt = progressRepository.findByOperationId(operationId);
@@ -228,6 +243,9 @@ public class BulkCrawlerService {
      * Get progress information for a bulk crawl operation
      */
     public Optional<BulkCrawlProgress> getBulkCrawlProgress(String operationId) {
+        if (!isBulkCrawlSupported()) {
+            return Optional.empty();
+        }
         return progressRepository.findByOperationId(operationId);
     }
     
@@ -235,6 +253,9 @@ public class BulkCrawlerService {
      * Get all active bulk crawl operations
      */
     public List<BulkCrawlProgress> getActiveOperations() {
+        if (!isBulkCrawlSupported()) {
+            return new ArrayList<>();
+        }
         return progressRepository.findActiveOperations();
     }
     
@@ -242,6 +263,9 @@ public class BulkCrawlerService {
      * Get recent bulk crawl operations
      */
     public List<BulkCrawlProgress> getRecentOperations(int daysBack) {
+        if (!isBulkCrawlSupported()) {
+            return new ArrayList<>();
+        }
         LocalDateTime afterTime = LocalDateTime.now().minusDays(daysBack);
         return progressRepository.findRecentOperations(afterTime);
     }
@@ -250,6 +274,9 @@ public class BulkCrawlerService {
      * Get bulk crawl operations statistics
      */
     public BulkCrawlStatistics getStatistics() {
+        if (!isBulkCrawlSupported()) {
+            return new BulkCrawlStatistics(new Object[]{0L, 0L, 0L, 0L, 0L, 0L});
+        }
         Object[] stats = progressRepository.getOperationsStatistics();
         return new BulkCrawlStatistics(stats);
     }
