@@ -43,7 +43,6 @@ public class CrawlerOrchestrationService {
      * Main crawling orchestration method
      */
     @Async
-    @Transactional
     public CompletableFuture<CrawlResult> startCrawling(LocalDate date, boolean forceUpdate) {
         logger.info("Starting crawling orchestration for date: {}", date);
         
