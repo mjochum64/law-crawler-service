@@ -37,6 +37,9 @@ public class BulkCrawlerService {
     @Autowired(required = false)
     private BulkCrawlProgressRepository progressRepository;
     
+    @Autowired
+    private Environment environment;
+    
     @Value("${crawler.bulk.max-concurrent-operations:2}")
     private int maxConcurrentOperations;
     
