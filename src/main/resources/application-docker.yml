@@ -22,10 +22,10 @@ server:
   port: 8080
   address: 0.0.0.0
   
-  # Management port for health checks and metrics
-  management:
-    port: 8081
-    address: 0.0.0.0
+  # Serve management endpoints on main port for Docker
+  # management:
+  #   port: 8081
+  #   address: 0.0.0.0
     
   # Tomcat optimization for container environment
   tomcat:
