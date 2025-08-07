@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 @Repository
 @org.springframework.context.annotation.Profile("!solr")
-public interface JpaLegalDocumentRepository extends JpaRepository<LegalDocument, Long> {
+public interface JpaLegalDocumentRepository extends JpaRepository<LegalDocument, Long>, LegalDocumentRepository {
 
     /**
      * Find document by unique document ID
