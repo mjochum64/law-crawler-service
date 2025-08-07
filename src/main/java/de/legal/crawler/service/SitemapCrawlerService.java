@@ -105,13 +105,22 @@ public class SitemapCrawlerService {
             .GET()
             .build();
             
-        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
         
         if (response.statusCode() != 200) {
             throw new RuntimeException("HTTP " + response.statusCode() + " for URL: " + url);
         }
         
-        return response.body();
+        byte[] responseBody = response.body();
+        String contentEncoding = response.headers().firstValue("Content-Encoding").orElse("");
+        
+        if ("gzip".equalsIgnoreCase(contentEncoding)) {
+            try (InputStream gzipStream = new GZIPInputStream(new ByteArrayInputStream(responseBody))) {
+                return new String(gzipStream.readAllBytes(), "UTF-8");
+            }
+        } else {
+            return new String(responseBody, "UTF-8");
+        }
     }
     
     private List<String> parseSitemapIndex(String xmlContent) throws Exception {
