@@ -70,6 +70,11 @@ public class BulkCrawlerService {
      */
     @Async
     public CompletableFuture<String> startFullBulkCrawl(BulkCrawlConfiguration config) {
+        if (!isBulkCrawlSupported()) {
+            logger.warn("Bulk crawl operations are not supported in Solr mode");
+            return CompletableFuture.completedFuture("UNSUPPORTED");
+        }
+        
         String operationId = generateOperationId();
         logger.info("Starting full bulk crawl operation: {}", operationId);
         
