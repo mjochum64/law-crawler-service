@@ -1,0 +1,7 @@
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/service/XmlValidationServiceIntegrationTest.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/LawCrawlerServiceApplicationTests.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/util/XmlSanitizerTest.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/validator/EcliValidatorTest.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/service/SitemapCrawlerServiceTest.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/model/LegalDocumentTest.java
+/home/mjochum/projekte/KI_TESTS/law-crawler-service/src/test/java/de/legal/crawler/controller/CrawlerControllerTest.java
