@@ -37,3 +37,47 @@
 - **Config**: Use `@Value` for properties, YAML configuration in application.yml
 - **Async**: Use `@Async` and CompletableFuture for concurrent operations
 - **Testing**: Use Spring Boot Test with `@SpringBootTest`, `@Test`, TestContainers for integration tests
+
+## 📊 KEY CONFIGURATION (application.yml)
+- **Database**: H2 file-based at ./data/legal-documents
+- **Crawler**: Base URL https://www.rechtsprechung-im-internet.de, 2s rate limit
+- **Storage**: ./legal-documents directory for XML files  
+- **Scheduling**: Daily 6AM, Weekly Sunday 2AM, Retry every 6h
+- **Security**: Max 10MB XML, sanitization enabled, external entities blocked
+- **Validation**: Schema, LegalDocML.de, ECLI validation enabled
+
+## 🎯 IMPORTANT FILE LOCATIONS
+- **Main App**: `src/main/java/de/legal/crawler/LawCrawlerServiceApplication.java`
+- **API Controllers**: `src/main/java/de/legal/crawler/controller/`
+- **Business Services**: `src/main/java/de/legal/crawler/service/`
+- **Data Models**: `src/main/java/de/legal/crawler/model/LegalDocument.java`
+- **XML Validation**: `src/main/java/de/legal/crawler/validator/`
+- **Configuration**: `src/main/resources/application.yml`
+- **Schemas**: `src/main/resources/schemas/simple-legal-document.xsd`
+
+## 🧠 HIVE MIND CONTEXT RESTORATION
+**To restore a Hive Mind session for this project:**
+
+```bash
+# 1. Initialize Claude Flow Hive Mind
+npx claude-flow swarm_init --topology hierarchical
+
+# 2. Spawn specialized agents
+npx claude-flow agent_spawn --type researcher --capabilities "legal-documents,xml-analysis"
+npx claude-flow agent_spawn --type coder --capabilities "spring-boot,java17,maven"  
+npx claude-flow agent_spawn --type analyst --capabilities "architecture,performance"
+npx claude-flow agent_spawn --type tester --capabilities "junit,integration-testing"
+
+# 3. Load context from memory
+npx claude-flow memory_usage --action retrieve --namespace hive --key architecture_overview
+npx claude-flow memory_usage --action retrieve --namespace hive --key service_components
+npx claude-flow memory_usage --action retrieve --namespace hive --key xml_processing
+```
+
+## 🔍 QUICK DEVELOPMENT WORKFLOW
+1. **Start app**: `mvn spring-boot:run` (port 8080)
+2. **Test crawl**: `curl -X POST "http://localhost:8080/api/crawler/crawl?date=2025-01-01"`
+3. **Check status**: `curl http://localhost:8080/api/crawler/status`
+4. **View logs**: `tail -f logs/crawler.log`  
+5. **Database**: Open http://localhost:8080/h2-console
+6. **Health check**: `curl http://localhost:8080/actuator/health`
