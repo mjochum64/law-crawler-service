@@ -552,6 +552,13 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
             } else if (dateObj instanceof String) {
                 // String representation - try to parse ISO format
                 String dateStr = (String) dateObj;
+                
+                // Handle Solr's serialized Instant format: "java.time.Instant:2025-08-08T17:50:39.304452945Z"
+                if (dateStr.startsWith("java.time.Instant:")) {
+                    dateStr = dateStr.substring("java.time.Instant:".length());
+                }
+                
+                // Parse ISO format with or without Z
                 if (dateStr.endsWith("Z")) {
                     return LocalDateTime.parse(dateStr.substring(0, dateStr.length() - 1));
                 } else {
