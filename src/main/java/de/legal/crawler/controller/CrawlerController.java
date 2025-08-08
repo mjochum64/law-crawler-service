@@ -125,10 +125,10 @@ public class CrawlerController {
     }
     
     /**
-     * Search documents
+     * Simple search documents by title
      */
-    @GetMapping("/search")
-    public ResponseEntity<List<LegalDocument>> searchDocuments(
+    @GetMapping("/search/simple")
+    public ResponseEntity<List<LegalDocument>> searchDocumentsByTitle(
             @RequestParam String query) {
         
         List<LegalDocument> documents = documentRepository
