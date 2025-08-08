@@ -179,4 +179,74 @@ public class CrawlerController {
             ));
         }
     }
+    
+    /**
+     * Full-text search in legal documents
+     */
+    @GetMapping("/search")
+    public ResponseEntity<Map<String, Object>> searchDocuments(
+            @RequestParam String query,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String court) {
+        
+        try {
+            // Build Solr query for full-text search
+            StringBuilder solrQuery = new StringBuilder();
+            
+            // Search in multiple fields
+            solrQuery.append("(full_text:").append(escapeQueryValue(query))
+                    .append(" OR title:").append(escapeQueryValue(query))
+                    .append(" OR subject:").append(escapeQueryValue(query))
+                    .append(" OR case_number:").append(escapeQueryValue(query))
+                    .append(" OR norms:").append(escapeQueryValue(query))
+                    .append(")");
+            
+            // Add court filter if specified
+            if (court != null && !court.isEmpty()) {
+                solrQuery.append(" AND court:").append(escapeQueryValue(court));
+            }
+            
+            List<LegalDocument> documents = documentRepository.findAllWithQueryAndSort(
+                solrQuery.toString(), "decision_date desc");
+            
+            // Apply pagination
+            int start = page * size;
+            int end = Math.min(start + size, documents.size());
+            List<LegalDocument> pagedDocuments = documents.subList(
+                Math.min(start, documents.size()), end);
+            
+            return ResponseEntity.ok(Map.of(
+                "query", query,
+                "court", court != null ? court : "all",
+                "page", page,
+                "size", size,
+                "total", documents.size(),
+                "documents", pagedDocuments.stream().map(doc -> Map.of(
+                    "documentId", doc.getDocumentId(),
+                    "title", doc.getTitle() != null ? doc.getTitle() : "",
+                    "subject", doc.getSubject() != null ? doc.getSubject() : "",
+                    "court", doc.getCourt(),
+                    "caseNumber", doc.getCaseNumber() != null ? doc.getCaseNumber() : "",
+                    "documentType", doc.getDocumentType() != null ? doc.getDocumentType() : "",
+                    "decisionDate", doc.getDecisionDate(),
+                    "ecli", doc.getEcliIdentifier() != null ? doc.getEcliIdentifier() : "",
+                    "norms", doc.getNorms() != null ? doc.getNorms() : ""
+                )).toList(),
+                "timestamp", System.currentTimeMillis()
+            ));
+            
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of(
+                "error", "Search failed",
+                "message", e.getMessage(),
+                "query", query
+            ));
+        }
+    }
+    
+    private String escapeQueryValue(String value) {
+        if (value == null) return "\"\"";
+        return "\"" + value.replace("\"", "\\\"") + "\"";
+    }
 }
