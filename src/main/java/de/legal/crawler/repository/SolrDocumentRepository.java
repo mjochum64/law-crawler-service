@@ -408,6 +408,10 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
         document.setSummary(getStringFieldValue(solrDoc, "summary"));
         document.setFilePath(getStringFieldValue(solrDoc, "file_path"));
         document.setDocumentType(getStringFieldValue(solrDoc, "document_type"));
+        document.setFullText(getStringFieldValue(solrDoc, "full_text"));
+        document.setCaseNumber(getStringFieldValue(solrDoc, "case_number"));
+        document.setNorms(getStringFieldValue(solrDoc, "norms"));
+        document.setSubject(getStringFieldValue(solrDoc, "subject"));
         
         String statusStr = getStringFieldValue(solrDoc, "status");
         if (statusStr != null) {
