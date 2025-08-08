@@ -521,4 +521,60 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
             return fieldValue.toString();
         }
     }
+    
+    /**
+     * Helper method to safely parse date field values from SolrDocument
+     * Handles Date, Collection<Date>, String, and Instant types from Solr
+     */
+    private LocalDateTime parseDate(Object dateObj) {
+        if (dateObj == null) {
+            return null;
+        }
+        
+        try {
+            if (dateObj instanceof java.util.Date) {
+                // Direct Date object
+                return LocalDateTime.ofInstant(((java.util.Date) dateObj).toInstant(), ZoneOffset.UTC);
+                
+            } else if (dateObj instanceof java.time.Instant) {
+                // Instant object from Solr
+                return LocalDateTime.ofInstant((java.time.Instant) dateObj, ZoneOffset.UTC);
+                
+            } else if (dateObj instanceof java.util.Collection) {
+                // Collection of date objects - take first one
+                java.util.Collection<?> collection = (java.util.Collection<?>) dateObj;
+                if (!collection.isEmpty()) {
+                    Object firstDate = collection.iterator().next();
+                    return parseDate(firstDate); // Recursive call for first element
+                }
+                return null;
+                
+            } else if (dateObj instanceof String) {
+                // String representation - try to parse ISO format
+                String dateStr = (String) dateObj;
+                if (dateStr.endsWith("Z")) {
+                    return LocalDateTime.parse(dateStr.substring(0, dateStr.length() - 1));
+                } else {
+                    return LocalDateTime.parse(dateStr);
+                }
+                
+            } else {
+                // Try to convert to string and parse
+                String dateStr = dateObj.toString();
+                logger.warn("Unknown date field type {}, attempting string parsing: {}", 
+                           dateObj.getClass().getSimpleName(), dateStr);
+                
+                if (dateStr.endsWith("Z")) {
+                    return LocalDateTime.parse(dateStr.substring(0, dateStr.length() - 1));
+                } else {
+                    return LocalDateTime.parse(dateStr);
+                }
+            }
+            
+        } catch (Exception e) {
+            logger.error("Failed to parse date field value '{}' of type {}: {}", 
+                        dateObj, dateObj.getClass().getSimpleName(), e.getMessage());
+            return null;
+        }
+    }
 }
