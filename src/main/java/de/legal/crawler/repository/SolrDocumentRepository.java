@@ -375,6 +375,10 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
         solrDoc.addField("file_path", document.getFilePath());
         solrDoc.addField("status", document.getStatus().name());
         solrDoc.addField("document_type", document.getDocumentType());
+        solrDoc.addField("full_text", document.getFullText());
+        solrDoc.addField("case_number", document.getCaseNumber());
+        solrDoc.addField("norms", document.getNorms());
+        solrDoc.addField("subject", document.getSubject());
         
         if (document.getDecisionDate() != null) {
             solrDoc.addField("decision_date", 
