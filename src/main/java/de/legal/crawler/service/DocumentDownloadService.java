@@ -116,7 +116,7 @@ public class DocumentDownloadService {
                 // Extract content from HTML for indexing
                 try {
                     HtmlContentExtractionService.ExtractedContent extractedContent = 
-                        htmlContentExtractionService.extractContent(content);
+                        htmlContentExtractionService.extractContent(xmlContent);
                     
                     // Update document with extracted content
                     document.setTitle(extractedContent.getTitle());
