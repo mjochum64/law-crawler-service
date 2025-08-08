@@ -113,6 +113,33 @@ public class DocumentDownloadService {
                     });
                 }
                 
+                // Extract content from HTML for indexing
+                try {
+                    HtmlContentExtractionService.ExtractedContent extractedContent = 
+                        htmlContentExtractionService.extractContent(content);
+                    
+                    // Update document with extracted content
+                    document.setTitle(extractedContent.getTitle());
+                    document.setSubject(extractedContent.getSubject());
+                    document.setFullText(extractedContent.getFullText());
+                    document.setCaseNumber(extractedContent.getCaseNumber());
+                    document.setEcliIdentifier(extractedContent.getEcli());
+                    document.setDocumentType(extractedContent.getDocumentType());
+                    document.setNorms(extractedContent.getNorms());
+                    
+                    // Update court if extracted value is more specific
+                    if (extractedContent.getCourt() != null && !extractedContent.getCourt().isEmpty()) {
+                        document.setCourt(extractedContent.getCourt());
+                    }
+                    
+                    logger.info("Content extracted for document {}: Title: '{}', Subject: '{}'", 
+                              document.getDocumentId(), extractedContent.getTitle(), extractedContent.getSubject());
+                              
+                } catch (Exception e) {
+                    logger.warn("Failed to extract content from HTML for document {}: {}", 
+                              document.getDocumentId(), e.getMessage());
+                }
+                
                 // Update document with file path
                 document.setFilePath(filePath);
                 document.setStatus(LegalDocument.DocumentStatus.DOWNLOADED);
