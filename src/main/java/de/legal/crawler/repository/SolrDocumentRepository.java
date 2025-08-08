@@ -336,7 +336,8 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
         return findAllWithQueryAndSort(queryString, null);
     }
 
-    private List<LegalDocument> findAllWithQueryAndSort(String queryString, String sort) {
+    @Override
+    public List<LegalDocument> findAllWithQueryAndSort(String queryString, String sort) {
         try {
             SolrQuery query = new SolrQuery(queryString);
             if (sort != null) {
