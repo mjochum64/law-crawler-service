@@ -40,6 +40,9 @@ public class DocumentDownloadService {
     private XmlValidationService xmlValidationService;
     
     @Autowired
+    private HtmlContentExtractionService htmlContentExtractionService;
+    
+    @Autowired
     @Qualifier("legalDocumentRepository") 
     private LegalDocumentRepository documentRepository;
     
