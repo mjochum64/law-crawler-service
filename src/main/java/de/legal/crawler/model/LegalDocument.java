@@ -54,6 +54,18 @@ public class LegalDocument {
     @Column
     private String documentType; // Decision, Order, etc.
 
+    @Column(columnDefinition = "TEXT")
+    private String fullText; // Extracted full text content for search
+
+    @Column
+    private String caseNumber; // Aktenzeichen
+
+    @Column(columnDefinition = "TEXT") 
+    private String norms; // Referenced legal norms
+
+    @Column
+    private String subject; // Document subject/summary
+
     // Constructors
     public LegalDocument() {}
 
