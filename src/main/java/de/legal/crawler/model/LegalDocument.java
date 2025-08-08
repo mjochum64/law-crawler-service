@@ -114,6 +114,18 @@ public class LegalDocument {
     public String getDocumentType() { return documentType; }
     public void setDocumentType(String documentType) { this.documentType = documentType; }
 
+    public String getFullText() { return fullText; }
+    public void setFullText(String fullText) { this.fullText = fullText; }
+
+    public String getCaseNumber() { return caseNumber; }
+    public void setCaseNumber(String caseNumber) { this.caseNumber = caseNumber; }
+
+    public String getNorms() { return norms; }
+    public void setNorms(String norms) { this.norms = norms; }
+
+    public String getSubject() { return subject; }
+    public void setSubject(String subject) { this.subject = subject; }
+
     public enum DocumentStatus {
         PENDING, DOWNLOADED, PROCESSED, FAILED
     }
