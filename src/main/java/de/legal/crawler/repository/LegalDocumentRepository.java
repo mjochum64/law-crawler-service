@@ -145,4 +145,9 @@ public interface LegalDocumentRepository {
      * Find recent documents
      */
     List<LegalDocument> findRecentDocuments(LocalDateTime since);
+    
+    /**
+     * Find documents with custom query and sorting
+     */
+    List<LegalDocument> findAllWithQueryAndSort(String query, String sort);
 }
