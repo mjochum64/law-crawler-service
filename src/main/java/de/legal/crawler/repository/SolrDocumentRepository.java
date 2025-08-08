@@ -419,14 +419,20 @@ public class SolrDocumentRepository implements LegalDocumentRepository {
             document.setStatus(LegalDocument.DocumentStatus.valueOf(statusStr));
         }
         
-        Date decisionDate = (Date) solrDoc.getFieldValue("decision_date");
-        if (decisionDate != null) {
-            document.setDecisionDate(LocalDateTime.ofInstant(decisionDate.toInstant(), ZoneOffset.UTC));
+        Object decisionDateObj = solrDoc.getFieldValue("decision_date");
+        if (decisionDateObj != null) {
+            LocalDateTime decisionDate = parseDate(decisionDateObj);
+            if (decisionDate != null) {
+                document.setDecisionDate(decisionDate);
+            }
         }
         
-        Date crawledAt = (Date) solrDoc.getFieldValue("crawled_at");
-        if (crawledAt != null) {
-            document.setCrawledAt(LocalDateTime.ofInstant(crawledAt.toInstant(), ZoneOffset.UTC));
+        Object crawledAtObj = solrDoc.getFieldValue("crawled_at");
+        if (crawledAtObj != null) {
+            LocalDateTime crawledAt = parseDate(crawledAtObj);
+            if (crawledAt != null) {
+                document.setCrawledAt(crawledAt);
+            }
         }
         
         return document;
